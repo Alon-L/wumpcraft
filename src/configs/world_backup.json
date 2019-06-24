@@ -1,0 +1,626 @@
+{
+  "player": {
+    "position": {
+      "x": 5,
+      "y": 5
+    }
+  },
+  "blocks": {
+    "1": {
+      "1": {
+        "name": "bedrock"
+      },
+      "2": {
+        "name": "bedrock"
+      },
+      "3": {
+        "name": "bedrock"
+      },
+      "4": {
+        "name": "bedrock"
+      },
+      "5": {
+        "name": "bedrock"
+      },
+      "6": {
+        "name": "bedrock"
+      },
+      "7": {
+        "name": "bedrock"
+      },
+      "8": {
+        "name": "bedrock"
+      },
+      "9": {
+        "name": "bedrock"
+      },
+      "10": {
+        "name": "bedrock"
+      },
+      "11": {
+        "name": "bedrock"
+      },
+      "12": {
+        "name": "bedrock"
+      },
+      "13": {
+        "name": "bedrock"
+      },
+      "14": {
+        "name": "bedrock"
+      },
+      "15": {
+        "name": "bedrock"
+      },
+      "16": {
+        "name": "bedrock"
+      },
+      "17": {
+        "name": "bedrock"
+      },
+      "18": {
+        "name": "bedrock"
+      }
+    },
+    "2": {
+      "1": {
+        "name": "stone"
+      },
+      "2": {
+        "name": "stone"
+      },
+      "3": {
+        "name": "stone"
+      },
+      "4": {
+        "name": "stone"
+      },
+      "5": {
+        "name": "stone"
+      },
+      "6": {
+        "name": "stone"
+      },
+      "7": {
+        "name": "stone"
+      },
+      "8": {
+        "name": "stone"
+      },
+      "9": {
+        "name": "stone"
+      },
+      "10": {
+        "name": "stone"
+      },
+      "11": {
+        "name": "stone"
+      },
+      "12": {
+        "name": "stone"
+      },
+      "13": {
+        "name": "sky"
+      },
+      "14": {
+        "name": "bedrock"
+      },
+      "15": {
+        "name": "bedrock"
+      },
+      "16": {
+        "name": "bedrock"
+      },
+      "17": {
+        "name": "bedrock"
+      },
+      "18": {
+        "name": "bedrock"
+      }
+    },
+    "3": {
+      "1": {
+        "name": "dirt"
+      },
+      "2": {
+        "name": "dirt"
+      },
+      "3": {
+        "name": "dirt"
+      },
+      "4": {
+        "name": "dirt"
+      },
+      "5": {
+        "name": "dirt"
+      },
+      "6": {
+        "name": "dirt"
+      },
+      "7": {
+        "name": "dirt"
+      },
+      "8": {
+        "name": "dirt"
+      },
+      "9": {
+        "name": "dirt"
+      },
+      "10": {
+        "name": "dirt"
+      },
+      "11": {
+        "name": "dirt"
+      },
+      "12": {
+        "name": "dirt"
+      },
+      "13": {
+        "name": "sky"
+      },
+      "14": {
+        "name": "bedrock"
+      },
+      "15": {
+        "name": "bedrock"
+      },
+      "16": {
+        "name": "bedrock"
+      },
+      "17": {
+        "name": "bedrock"
+      },
+      "18": {
+        "name": "bedrock"
+      }
+    },
+    "4": {
+      "1": {
+        "name": "grass"
+      },
+      "2": {
+        "name": "grass"
+      },
+      "3": {
+        "name": "grass"
+      },
+      "4": {
+        "name": "grass"
+      },
+      "5": {
+        "name": "grass"
+      },
+      "6": {
+        "name": "grass"
+      },
+      "7": {
+        "name": "grass"
+      },
+      "8": {
+        "name": "grass"
+      },
+      "9": {
+        "name": "grass"
+      },
+      "10": {
+        "name": "grass"
+      },
+      "11": {
+        "name": "grass"
+      },
+      "12": {
+        "name": "grass"
+      },
+      "13": {
+        "name": "grass"
+      },
+      "14": {
+        "name": "bedrock"
+      },
+      "15": {
+        "name": "bedrock"
+      },
+      "16": {
+        "name": "bedrock"
+      },
+      "17": {
+        "name": "bedrock"
+      },
+      "18": {
+        "name": "bedrock"
+      }
+    },
+    "5": {
+      "1": {
+        "name": "sky"
+      },
+      "2": {
+        "name": "sky"
+      },
+      "3": {
+        "name": "sky"
+      },
+      "4": {
+        "name": "sky"
+      },
+      "5": {
+        "name": "sky"
+      },
+      "6": {
+        "name": "sky"
+      },
+      "7": {
+        "name": "sky"
+      },
+      "8": {
+        "name": "sky"
+      },
+      "9": {
+        "name": "log"
+      },
+      "10": {
+        "name": "sky"
+      },
+      "11": {
+        "name": "sky"
+      },
+      "12": {
+        "name": "sky"
+      },
+      "13": {
+        "name": "sky"
+      },
+      "14": {
+        "name": "bedrock"
+      },
+      "15": {
+        "name": "bedrock"
+      },
+      "16": {
+        "name": "bedrock"
+      },
+      "17": {
+        "name": "bedrock"
+      },
+      "18": {
+        "name": "bedrock"
+      }
+    },
+    "6": {
+      "1": {
+        "name": "sky"
+      },
+      "2": {
+        "name": "sky"
+      },
+      "3": {
+        "name": "sky"
+      },
+      "4": {
+        "name": "sky"
+      },
+      "5": {
+        "name": "sky"
+      },
+      "6": {
+        "name": "sky"
+      },
+      "7": {
+        "name": "sky"
+      },
+      "8": {
+        "name": "leaves"
+      },
+      "9": {
+        "name": "leaves"
+      },
+      "10": {
+        "name": "leaves"
+      },
+      "11": {
+        "name": "sky"
+      },
+      "12": {
+        "name": "sky"
+      },
+      "13": {
+        "name": "sky"
+      },
+      "14": {
+        "name": "bedrock"
+      },
+      "15": {
+        "name": "bedrock"
+      },
+      "16": {
+        "name": "bedrock"
+      },
+      "17": {
+        "name": "bedrock"
+      },
+      "18": {
+        "name": "bedrock"
+      }
+    },
+    "7": {
+      "1": {
+        "name": "sky"
+      },
+      "2": {
+        "name": "sky"
+      },
+      "3": {
+        "name": "sky"
+      },
+      "4": {
+        "name": "sky"
+      },
+      "5": {
+        "name": "sky"
+      },
+      "6": {
+        "name": "sky"
+      },
+      "7": {
+        "name": "sky"
+      },
+      "8": {
+        "name": "sky"
+      },
+      "9": {
+        "name": "leaves"
+      },
+      "10": {
+        "name": "sky"
+      },
+      "11": {
+        "name": "sky"
+      },
+      "12": {
+        "name": "sky"
+      },
+      "13": {
+        "name": "sky"
+      },
+      "14": {
+        "name": "bedrock"
+      },
+      "15": {
+        "name": "bedrock"
+      },
+      "16": {
+        "name": "bedrock"
+      },
+      "17": {
+        "name": "bedrock"
+      },
+      "18": {
+        "name": "bedrock"
+      }
+    },
+    "8": {
+      "1": {
+        "name": "sky"
+      },
+      "2": {
+        "name": "sky"
+      },
+      "3": {
+        "name": "sky"
+      },
+      "4": {
+        "name": "sky"
+      },
+      "5": {
+        "name": "sky"
+      },
+      "6": {
+        "name": "sky"
+      },
+      "7": {
+        "name": "sky"
+      },
+      "8": {
+        "name": "sky"
+      },
+      "9": {
+        "name": "sky"
+      },
+      "10": {
+        "name": "sky"
+      },
+      "11": {
+        "name": "sky"
+      },
+      "12": {
+        "name": "sky"
+      },
+      "13": {
+        "name": "sky"
+      },
+      "14": {
+        "name": "bedrock"
+      },
+      "15": {
+        "name": "bedrock"
+      },
+      "16": {
+        "name": "bedrock"
+      },
+      "17": {
+        "name": "bedrock"
+      },
+      "18": {
+        "name": "bedrock"
+      }
+    },
+    "9": {
+      "1": {
+        "name": "sky"
+      },
+      "2": {
+        "name": "sky"
+      },
+      "3": {
+        "name": "sky"
+      },
+      "4": {
+        "name": "sky"
+      },
+      "5": {
+        "name": "sky"
+      },
+      "6": {
+        "name": "sky"
+      },
+      "7": {
+        "name": "sky"
+      },
+      "8": {
+        "name": "sky"
+      },
+      "9": {
+        "name": "sky"
+      },
+      "10": {
+        "name": "sky"
+      },
+      "11": {
+        "name": "sky"
+      },
+      "12": {
+        "name": "sky"
+      },
+      "13": {
+        "name": "sky"
+      },
+      "14": {
+        "name": "bedrock"
+      },
+      "15": {
+        "name": "bedrock"
+      },
+      "16": {
+        "name": "bedrock"
+      },
+      "17": {
+        "name": "bedrock"
+      },
+      "18": {
+        "name": "bedrock"
+      }
+    },
+    "10": {
+      "1": {
+        "name": "sky"
+      },
+      "2": {
+        "name": "sky"
+      },
+      "3": {
+        "name": "sky"
+      },
+      "4": {
+        "name": "sky"
+      },
+      "5": {
+        "name": "sky"
+      },
+      "6": {
+        "name": "sky"
+      },
+      "7": {
+        "name": "sky"
+      },
+      "8": {
+        "name": "sky"
+      },
+      "9": {
+        "name": "sky"
+      },
+      "10": {
+        "name": "sky"
+      },
+      "11": {
+        "name": "sky"
+      },
+      "12": {
+        "name": "sky"
+      },
+      "13": {
+        "name": "sky"
+      },
+      "14": {
+        "name": "bedrock"
+      },
+      "15": {
+        "name": "bedrock"
+      },
+      "16": {
+        "name": "bedrock"
+      },
+      "17": {
+        "name": "bedrock"
+      },
+      "18": {
+        "name": "bedrock"
+      }
+    },
+    "11": {
+      "1": {
+        "name": "bedrock"
+      },
+      "2": {
+        "name": "bedrock"
+      },
+      "3": {
+        "name": "bedrock"
+      },
+      "4": {
+        "name": "bedrock"
+      },
+      "5": {
+        "name": "bedrock"
+      },
+      "6": {
+        "name": "bedrock"
+      },
+      "7": {
+        "name": "bedrock"
+      },
+      "8": {
+        "name": "bedrock"
+      },
+      "9": {
+        "name": "bedrock"
+      },
+      "10": {
+        "name": "bedrock"
+      },
+      "11": {
+        "name": "bedrock"
+      },
+      "12": {
+        "name": "bedrock"
+      },
+      "13": {
+        "name": "bedrock"
+      },
+      "14": {
+        "name": "bedrock"
+      },
+      "15": {
+        "name": "bedrock"
+      },
+      "16": {
+        "name": "bedrock"
+      },
+      "17": {
+        "name": "bedrock"
+      },
+      "18": {
+        "name": "bedrock"
+      }
+    }
+  }
+}

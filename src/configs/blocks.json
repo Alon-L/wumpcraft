@@ -1,0 +1,44 @@
+{
+  "stone": {
+    "name": "st",
+    "id": "592759753248079872",
+    "type": "block",
+    "mineable": true
+  },
+  "dirt": {
+    "name": "dr",
+    "id": "592759691784749076",
+    "type": "block",
+    "mineable": true
+  },
+  "grass": {
+    "name": "gr",
+    "id": "592759726065057807",
+    "type": "block",
+    "mineable": true
+  },
+  "leaves": {
+    "name": "le",
+    "id": "592764955091140608",
+    "type": "block",
+    "mineable": true
+  },
+  "log": {
+    "name": "lo",
+    "id": "592764545513029672",
+    "type": "block",
+    "mineable": true
+  },
+  "bedrock": {
+    "name": "be",
+    "id": "592759776606290000",
+    "type": "block",
+    "mineable": false
+  },
+  "sky": {
+    "name": "sk",
+    "id": "592764148924809222",
+    "type": null,
+    "mineable": false
+  }
+}
