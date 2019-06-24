@@ -1,0 +1,25 @@
+{
+  "extends": ["prettier"],
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "rules": {
+    "arrow-parens": ["off"],
+    "consistent-return": "off",
+    "comma-dangle": "off",
+    "generator-star-spacing": "off",
+    "no-console": "off",
+    "no-continue": "off",
+    "no-use-before-define": "off",
+    "no-multi-assign": "off",
+    "no-shadow": "warn",
+    "no-restricted-syntax": "off",
+    "no-param-reassign": "off",
+    "no-plusplus": "off",
+    "no-underscore-dangle": "warn"
+  },
+  "parserOptions": {
+    "ecmaVersion": 8
+  }
+}

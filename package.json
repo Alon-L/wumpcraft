@@ -1,0 +1,46 @@
+{
+  "name": "hack-week",
+  "version": "1.0.0",
+  "description": "Discord bot for the first Hack Week contest.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "lint-staged": {
+    "*.{js,jsx}": [
+      "cross-env NODE_ENV=development eslint --cache --format=pretty",
+      "prettier --ignore-path .eslintignore --single-quote --write",
+      "git add"
+    ],
+    "{*.json,.{babelrc,eslintrc,prettierrc,stylelintrc}}": [
+      "prettier --ignore-path .eslintignore --parser json --write",
+      "git add"
+    ],
+    "*.{css,scss}": [
+      "stylelint --ignore-path .eslintignore --syntax scss --fix",
+      "prettier --ignore-path .eslintignore --single-quote --write",
+      "git add"
+    ],
+    "*.{yml,md}": [
+      "prettier --ignore-path .eslintignore --single-quote --write",
+      "git add"
+    ]
+  },
+  "keywords": [],
+  "author": "Alon Livne",
+  "license": "MIT",
+  "devEngines": {
+    "node": ">=7.x",
+    "npm": ">=4.x",
+    "npm run": ">=0.21.3"
+  },
+  "dependencies": {
+    "discord.js": "^11.4.2",
+    "eslint": "^6.0.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-prettier": "^5.0.0",
+    "perlin-noise": "0.0.1",
+    "prettier": "^1.18.2"
+  }
+}
