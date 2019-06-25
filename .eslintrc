@@ -1,11 +1,12 @@
 {
-  "extends": ["prettier"],
   "env": {
     "browser": true,
     "node": true
   },
   "rules": {
-    "arrow-parens": ["off"],
+    "arrow-parens": [
+      "off"
+    ],
     "consistent-return": "off",
     "comma-dangle": "off",
     "generator-star-spacing": "off",
@@ -17,9 +18,21 @@
     "no-restricted-syntax": "off",
     "no-param-reassign": "off",
     "no-plusplus": "off",
-    "no-underscore-dangle": "warn"
+    "no-underscore-dangle": "warn",
+    "promise/param-names": "error",
+    "promise/always-return": "error",
+    "promise/catch-or-return": "error",
+    "promise/no-native": "off",
+    "quotes": [
+      2,
+      "single",
+      {
+        "avoidEscape": true
+      }
+    ]
   },
   "parserOptions": {
     "ecmaVersion": 8
-  }
+  },
+  "plugins": ["promise"]
 }

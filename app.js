@@ -1,4 +1,5 @@
 const Discord = require('discord.js');
+const { createData } = require('./src/data');
 const { token } = require('./src/configs/token.json');
 const CommandsHandler = require('./src/handlers/CommandsHandler.js');
 const EventsHandler = require('./src/handlers/EventsHandler.js');
@@ -14,5 +15,20 @@ function login() {
 }
 
 login();
+createData();
 new CommandsHandler(client).load();
 new EventsHandler(client).load();
+
+process.on('exit', close);
+
+process.on('SIGINT', close);
+
+process.on('SIGUSR1', close);
+process.on('SIGUSR2', close);
+
+process.on('uncaughtException', close);
+
+function close() {
+  // TODO: Save data from ./src/data.js into the files
+  console.log('Close');
+}

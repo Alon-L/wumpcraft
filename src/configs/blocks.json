@@ -1,44 +1,205 @@
 {
+  "redstone": {
+    "name": "re",
+    "id": "593132269053411338",
+    "type": "block",
+    "collision": {
+      "player": true,
+      "liquid": true
+    },
+    "replaceable": false,
+    "mineable": true
+  },
+  "lapis": {
+    "name": "la",
+    "id": "593132243346653196",
+    "type": "block",
+    "collision": {
+      "player": true,
+      "liquid": true
+    },
+    "replaceable": false,
+    "mineable": true
+  },
+  "gold": {
+    "name": "go",
+    "id": "593132223490949121",
+    "type": "block",
+    "collision": {
+      "player": true,
+      "liquid": true
+    },
+    "replaceable": false,
+    "mineable": true
+  },
+  "emerald": {
+    "name": "em",
+    "id": "593132213294333962",
+    "type": "block",
+    "collision": {
+      "player": true,
+      "liquid": true
+    },
+    "replaceable": false,
+    "mineable": true
+  },
+  "coal": {
+    "name": "co",
+    "id": "593132196148019220",
+    "type": "block",
+    "collision": {
+      "player": true,
+      "liquid": true
+    },
+    "replaceable": false,
+    "mineable": true
+  },
+  "iron": {
+    "name": "ir",
+    "id": "593134494316232724",
+    "type": "block",
+    "collision": {
+      "player": true,
+      "liquid": true
+    },
+    "replaceable": false,
+    "mineable": true
+  },
+  "diamond": {
+    "name": "di",
+    "id": "593132100962615306",
+    "type": "block",
+    "collision": {
+      "player": true,
+      "liquid": true
+    },
+    "replaceable": false,
+    "mineable": true
+  },
+  "water": {
+    "name": "wa",
+    "id": "593027585152385034",
+    "type": "block",
+    "collision": {
+      "player": false,
+      "liquid": true
+    },
+    "replaceable": true,
+    "mineable": false,
+    "liquid": true
+  },
+  "lava": {
+    "name": "la",
+    "id": "593027603871301633",
+    "type": "block",
+    "collision": {
+      "player": false,
+      "liquid": true
+    },
+    "replaceable": true,
+    "mineable": false,
+    "harmful": {
+      "lives": 1
+    },
+    "liquid": true
+  },
+  "sandstone": {
+    "name": "sd",
+    "id": "593020554458431538",
+    "type": "block",
+    "collision": {
+      "player": true,
+      "liquid": true
+    },
+    "replaceable": false,
+    "mineable": true
+  },
+  "dead_bush": {
+    "name": "de",
+    "id": "593024159085232138",
+    "type": "block",
+    "collision": {
+      "player": false,
+      "liquid": true
+    },
+    "replaceable": false,
+    "mineable": true
+  },
   "stone": {
     "name": "st",
     "id": "592759753248079872",
     "type": "block",
+    "collision": {
+      "player": true,
+      "liquid": true
+    },
+    "replaceable": false,
     "mineable": true
   },
   "dirt": {
     "name": "dr",
     "id": "592759691784749076",
     "type": "block",
+    "collision": {
+      "player": true,
+      "liquid": true
+    },
+    "replaceable": false,
     "mineable": true
   },
   "grass": {
     "name": "gr",
     "id": "592759726065057807",
     "type": "block",
+    "collision": {
+      "player": true,
+      "liquid": true
+    },
+    "replaceable": false,
     "mineable": true
   },
   "leaves": {
     "name": "le",
     "id": "592764955091140608",
     "type": "block",
+    "collision": {
+      "player": true,
+      "liquid": true
+    },
+    "replaceable": false,
     "mineable": true
   },
   "log": {
     "name": "lo",
     "id": "592764545513029672",
     "type": "block",
+    "collision": {
+      "player": true,
+      "liquid": true
+    },
+    "replaceable": false,
     "mineable": true
   },
   "bedrock": {
     "name": "be",
     "id": "592759776606290000",
     "type": "block",
+    "collision": {
+      "player": true,
+      "liquid": true
+    },
+    "replaceable": false,
     "mineable": false
   },
   "sky": {
     "name": "sk",
     "id": "592764148924809222",
     "type": null,
+    "collision": {
+      "player": false,
+      "liquid": false
+    },
+    "replaceable": true,
     "mineable": false
   }
 }

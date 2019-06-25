@@ -20,6 +20,6 @@ module.exports = {
     name: `ping`,
     description: `Pong.`,
     usage: `ping`,
-    helpSection: "normal",
+    helpSection: 'normal'
   }
 };

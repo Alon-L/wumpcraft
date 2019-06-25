@@ -1,0 +1,11 @@
+{
+  "percentages": {
+    "coal": 20,
+    "iron": 10,
+    "gold": 10,
+    "lapis": 20,
+    "diamond": 5,
+    "redstone": 20,
+    "emerald": 15
+  }
+}
