@@ -4,16 +4,20 @@
       "x": 2,
       "y": 22
     },
+    "score": [
+      0
+    ],
+    "achievements": [],
     "hearts": 10,
     "inventory": {
       "hotbar": {
         "1": {
-          "name": "stone",
-          "amount": 9
+          "name": "sky",
+          "amount": 0
         },
         "2": {
-          "name": "dirt",
-          "amount": 11
+          "name": "sky",
+          "amount": 0
         },
         "3": {
           "name": "sky",
@@ -24,15 +28,15 @@
           "amount": 0
         },
         "5": {
-          "name": "sandstone",
-          "amount": 15
+          "name": "sky",
+          "amount": 0
         },
         "6": {
-          "name": "log",
-          "amount": 40
+          "name": "sky",
+          "amount": 0
         }
       },
-      "selected": 2
+      "selected": 1
     }
   },
   "blocks": {
@@ -1409,16 +1413,16 @@
         "name": "stone"
       },
       "4": {
-        "name": "stone"
+        "name": "dirt"
       },
       "5": {
-        "name": "stone"
+        "name": "dirt"
       },
       "6": {
-        "name": "stone"
+        "name": "dirt"
       },
       "7": {
-        "name": "stone"
+        "name": "dirt"
       },
       "8": {
         "name": "stone"
@@ -4136,7 +4140,7 @@
         "name": "dirt"
       },
       "5": {
-        "name": "dirt"
+        "name": "grass"
       },
       "6": {
         "name": "grass"
@@ -4151,7 +4155,7 @@
         "name": "grass"
       },
       "10": {
-        "name": "grass"
+        "name": "dirt"
       },
       "11": {
         "name": "dirt"
@@ -4387,13 +4391,13 @@
         "name": "grass"
       },
       "13": {
-        "name": "dirt"
-      },
-      "14": {
         "name": "grass"
       },
+      "14": {
+        "name": "dirt"
+      },
       "15": {
-        "name": "sky"
+        "name": "grass"
       },
       "16": {
         "name": "sky"
@@ -4489,7 +4493,7 @@
         "name": "sky"
       },
       "47": {
-        "name": "sky"
+        "name": "tall_grass"
       },
       "48": {
         "name": "sky"
@@ -4504,7 +4508,7 @@
         "name": "sky"
       },
       "52": {
-        "name": "sky"
+        "name": "flower"
       },
       "53": {
         "name": "sky"
@@ -4587,7 +4591,7 @@
         "name": "grass"
       },
       "4": {
-        "name": "sky"
+        "name": "tall_grass"
       },
       "5": {
         "name": "sky"
@@ -4611,16 +4615,16 @@
         "name": "sky"
       },
       "12": {
-        "name": "sky"
+        "name": "flower"
       },
       "13": {
-        "name": "sky"
+        "name": "tall_grass"
       },
       "14": {
         "name": "log"
       },
       "15": {
-        "name": "sky"
+        "name": "tall_grass"
       },
       "16": {
         "name": "sky"
@@ -4644,7 +4648,7 @@
         "name": "sky"
       },
       "23": {
-        "name": "sky"
+        "name": "flower"
       },
       "24": {
         "name": "grass"
@@ -4704,10 +4708,10 @@
         "name": "sky"
       },
       "43": {
-        "name": "sky"
+        "name": "flower"
       },
       "44": {
-        "name": "sky"
+        "name": "tall_grass"
       },
       "45": {
         "name": "sky"
@@ -4808,10 +4812,10 @@
         "name": "sky"
       },
       "2": {
-        "name": "sky"
+        "name": "tall_grass"
       },
       "3": {
-        "name": "sky"
+        "name": "flower"
       },
       "4": {
         "name": "sky"
@@ -5119,13 +5123,13 @@
         "name": "sky"
       },
       "30": {
-        "name": "sky"
+        "name": "tall_grass"
       },
       "31": {
         "name": "sky"
       },
       "32": {
-        "name": "sky"
+        "name": "tall_grass"
       },
       "33": {
         "name": "log"
@@ -5134,7 +5138,7 @@
         "name": "sky"
       },
       "35": {
-        "name": "sky"
+        "name": "flower"
       },
       "36": {
         "name": "sky"

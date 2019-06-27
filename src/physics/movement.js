@@ -1,15 +1,15 @@
 const path = require('path');
 const fs = require('fs');
+const { fallDamage } = require('../configs/player');
+const updateScene = require('../game/updateScene');
+const renderHealthbar = require('../player/healthbar');
 const addReactions = require('../utils/reactions/addReactions');
 const reactionCollector = require('../utils/reactions/reactionCollector');
 const { longestArrayLength, findKeyByValue } = require('../utils/generalMethods');
-const translateWorld = require('../world/translateWorld');
 const collision = require('./collision');
 const gravity = require('./gravity');
-const onMove = require('../player/onMove');
-const { data } = require('../data');
-
-let world, healthbar, hotbar;
+const onMove = require('../player/events/onMove');
+const { getData } = require('../data');
 
 const reactions = {
   topleft: '↖',
@@ -33,21 +33,25 @@ const directions = {
   down: (x, y) => [x, y - 1]
 };
 
+let world, healthbar, hotbar, worldRender, msg;
+
 /**
  * @desc Adds the ability to move using the reactions.
- * @param msg
- * @param author
  * @returns {Promise<void>}
+ * @param _msg
  */
-async function movement(msg, author) {
-  const d = data.get(author.id);
+async function movement(_msg) {
+  const d = getData(_msg.author.id);
+  if (!d) return;
   world = d.world;
   healthbar = d.health;
   hotbar = d.hotbar;
+  worldRender = d.worldRender;
+  msg = _msg;
 
-  await addReactions(msg, reactions);
+  await addReactions(worldRender, ...Object.values(reactions));
 
-  reactionCollector(msg, reactions, author, getDirection);
+  reactionCollector(worldRender, Object.values(reactions), msg.author, getDirection);
 
   async function getDirection({ emoji: { name } }) {
     const direction = findKeyByValue(reactions, name);
@@ -55,16 +59,15 @@ async function movement(msg, author) {
     if (crossPath) {
       return crossPath.forEach(async c => await getDirection({ emoji: { name: reactions[c] } }))
     }
-    await handleMovement(msg, direction);
+    await handleMovement(direction);
   }
 }
 
 /**
- * @desc Calculates where the player should be at after his movement
- * @param msg
+ * @desc Calculates where the player should be at after they move.
  * @param direction
  */
-async function handleMovement(msg, direction) {
+async function handleMovement(direction) {
   const { blocks, player: { position } } = world;
 
   const height = Number(Object.keys(blocks)[Object.keys(blocks).length - 1]);
@@ -76,38 +79,39 @@ async function handleMovement(msg, direction) {
 
   if (newX === 0 || newY === 0 || newX === width + 1 || newY === height /* Count the player head */) return;
 
-  /*
-  Check for block collision. Don't move if block is not mineable.
-   */
-  if (collision(world, hotbar, newX, newY)) return;
-  await move(msg, newX, newY);
+  // Check for block collision. Don't move if block is not mineable.
+  if (collision(msg, hotbar, newX, newY)) return;
+  await move(newX, newY);
 
-  /*
-  Check for gravity. Keep falling as long as there is not a solid block under the player.
-   */
-  for (let i = newY; i > 1 && gravity(world, newX, i); i--) {
-    if (collision(world, hotbar, newX, i - 1)) break;
-    await move(msg, newX, i - 1);
+
+  // Check for gravity. Keep falling as long as there is not a solid block under the player.
+  let fallDamageTaken;
+  for (let i = newY, j = 1; i > 1 && gravity(world, newX, i); i--, j++) {
+    if (collision(msg, hotbar, newX, i - 1)) break;
+    await move(newX, i - 1);
+    fallDamageTaken = j;
+  }
+
+  if (fallDamageTaken >= fallDamage.min) {
+    const hearts = world.player.hearts - fallDamage.lives(fallDamageTaken);
+    const health = renderHealthbar(hearts, msg, 'fall');
+    if (health) {
+      await healthbar.edit(health);
+    }
   }
 }
 
 /**
- * @desc Moves the player.
+ * @desc Moves the player and update the file and the scene.
  */
-async function move(msg, newX, newY) {
+async function move(newX, newY) {
   const { position } = world.player;
   position.x = newX;
   position.y = newY;
-  //console.log(newX, newY);
-  //console.log(Object.keys(world.player));
-  // TODO: Do not save file every update. Add an auto save every x minutes / when bot restarts / when members hit the save reaction
-  fs.writeFileSync(path.join(__dirname, '../configs/world.json'), JSON.stringify(world, null, 2));
-  await updateScene(msg, newX, newY);
-  onMove(world, healthbar, newX, newY);
-}
 
-function updateScene(msg, newX, newY) {
-  return msg.edit(translateWorld(world, newX, newY));
+  fs.writeFileSync(path.join(__dirname, `../saves/${msg.author.id}.json`), JSON.stringify(world, null, 2));
+  await updateScene(worldRender, world, newX, newY);
+  onMove(msg, healthbar, newX, newY);
 }
 
 module.exports = movement;

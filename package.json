@@ -1,11 +1,22 @@
 {
   "name": "hack-week",
   "version": "1.0.0",
-  "description": "Discord bot for the first Hack Week contest.",
   "main": "app.js",
+  "author": {
+    "name": "Alon Livne",
+    "url": "https://daycolor.org"
+  },
+  "license": "MIT",
+  "description": "Discord bot for the first Hack Week contest.",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js"
+  },
+  "bugs": {
+    "url": "https://github.com/DayColor/hack-week/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/DayColor/hack-week"
   },
   "lint-staged": {
     "*.{js,jsx}": [
@@ -27,21 +38,24 @@
       "git add"
     ]
   },
-  "keywords": [],
-  "author": "Alon Livne",
-  "license": "MIT",
+  "keywords": [
+    "discord",
+    "bot",
+    "hack week",
+    "minecraft"
+  ],
   "devEngines": {
     "node": ">=8.x",
-    "npm": ">=4.x",
-    "npm run": ">=0.21.3"
+    "npm": ">=4.x"
   },
   "dependencies": {
     "discord.js": "^11.4.2",
-    "eslint": "^6.0.0",
-    "eslint-config-airbnb": "^17.1.0",
-    "eslint-config-prettier": "^5.0.0",
+    "dotenv": "^8.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^6.0.1",
+    "eslint-config-prettier": "^5.1.0",
     "eslint-plugin-promise": "^4.2.1",
-    "perlin-noise": "0.0.1",
     "prettier": "^1.18.2"
   }
 }

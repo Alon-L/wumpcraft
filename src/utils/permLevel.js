@@ -3,8 +3,8 @@ const staffRoles = require('../configs/staffRoles');
 function permLevel(msg) {
   let permlvl = 0;
   if (!msg.member) return permlvl;
-  for (const role of staffRoles) {
-    const role = msg.guild.roles.find(r => r.name === role);
+  for (const roleName of staffRoles) {
+    const role = msg.guild.roles.find(r => r.name === roleName);
     if (role) {
       if (msg.member.roles.has(role.id)) permlvl = 1;
     }

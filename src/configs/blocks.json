@@ -78,7 +78,7 @@
   },
   "water": {
     "name": "wa",
-    "id": "593027585152385034",
+    "id": "593479768469405696",
     "type": "block",
     "collision": {
       "player": false,
@@ -89,8 +89,8 @@
     "liquid": true
   },
   "lava": {
-    "name": "la",
-    "id": "593027603871301633",
+    "name": "lv",
+    "id": "593479847305543723",
     "type": "block",
     "collision": {
       "player": false,
@@ -109,6 +109,28 @@
     "type": "block",
     "collision": {
       "player": true,
+      "liquid": true
+    },
+    "replaceable": false,
+    "mineable": true
+  },
+  "tall_grass": {
+    "name": "ta",
+    "id": "593479816448049157",
+    "type": "block",
+    "collision": {
+      "player": false,
+      "liquid": false
+    },
+    "replaceable": true,
+    "mineable": false
+  },
+  "flower": {
+    "name": "fl",
+    "id": "593478278103433257",
+    "type": "block",
+    "collision": {
+      "player": false,
       "liquid": true
     },
     "replaceable": false,
@@ -160,7 +182,7 @@
   },
   "leaves": {
     "name": "le",
-    "id": "592764955091140608",
+    "id": "593479918994718728",
     "type": "block",
     "collision": {
       "player": true,

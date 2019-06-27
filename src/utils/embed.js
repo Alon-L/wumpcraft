@@ -9,7 +9,7 @@ function embed(channel, desc, type, title = '') {
       .setDescription(desc)
       .setTimestamp()
       .setFooter(embedConf.footer);
-    channel.send({ embed: embedBuild });
+    channel.start({ embed: embedBuild });
 }
 
 module.exports = embed;

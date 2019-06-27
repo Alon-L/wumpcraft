@@ -21,10 +21,22 @@ function longestArrayLength(arr) {
   return longest;
 }
 
+/**
+ * @desc Find a key in an object by his value.
+ * @param obj
+ * @param value
+ * @returns {string}
+ */
 function findKeyByValue(obj, value) {
   return Object.keys(obj).find(key => obj[key] === value);
 }
 
+/**
+ * @desc Generate a random number between two integers.
+ * @param min
+ * @param max
+ * @returns {number}
+ */
 function randNumberBetween(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }

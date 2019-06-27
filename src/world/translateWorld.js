@@ -68,21 +68,16 @@ function translateWorld(world, x, y) {
   let yAxis = y1;
   let xAxis = x2 - 1;
 
-  /*
-  Loop through the map rows ranging between the two y points.
-   */
+
+  // Loop through the map rows ranging between the two y points.
   Object.values(getInRange(y2, y1, blocks))
     .reverse()
     .forEach((row) => {
-      /*
-      Loop through the map blocks ranging between the two x points.
-       */
+      // Loop through the map blocks ranging between the two x points.
       str += Object.values(getInRange(x2, x1, row))
           .map((block) => {
             xAxis++;
-            /*
-            Determine if the spot deserves a normal block or the player entity.
-             */
+            // Determine if the spot deserves a normal block or the player entity.
             if (Number(yAxis) === y && Number(xAxis) === x) {
               return emojiFormat(playerInfo.body.id);
             }
@@ -101,7 +96,7 @@ function translateWorld(world, x, y) {
       xAxis = x2 - 1;
     });
   return str.length > 0
-    ? str + `\n${x}, ${y}`
+    ? str + `\n__Score:__ ${world.player.score.reduce((acc, curr) => acc + curr, 0)}\n${x} ${y}`
     : 'An error has occurred';
 }
 

@@ -1,12 +1,12 @@
-const translateWorld = require('../world/translateWorld');
+const updateScene = require('../game/updateScene');
 const addReactions = require('../utils/reactions/addReactions');
 const reactionCollector = require('../utils/reactions/reactionCollector');
 const { findBlock, getBlockInfo } = require('../world/blockMethods');
 const removeItem = require('../player/inventory/removeItem');
 const { renderHotbar } = require('../player/hotbar');
-const { data } = require('../data');
+const { getData } = require('../data');
 
-let world, hotbarMsg;
+let world, hotbarMsg, msg;
 
 const reactions = {
   left: '◀',
@@ -14,8 +14,6 @@ const reactions = {
   down: '🔽',
   right: '▶',
 };
-
-// TODO: Add close view reaction (not in this file).
 
 // All the directions and a function returning the x and y when placing a block in that direction.
 const directions = {
@@ -25,23 +23,35 @@ const directions = {
   down: (x, y) => [x, y - 1],
 };
 
-async function placement(msg, author) {
-  const d = data.get(author.id);
+/**
+ * @desc Adds the placement reactions to the world render message and place a block whenever they are pressed.
+ * @param member
+ * @returns {Promise<void>}
+ */
+async function placement(member) {
+  const d = getData(member.id);
+  if (!d) return;
   world = d.world;
   hotbarMsg = d.hotbar;
+  msg = d.worldRender;
 
-  await addReactions(msg, reactions);
+  await addReactions(msg, ...Object.values(reactions));
 
-  reactionCollector(msg, reactions, author, async function(r) {
+  reactionCollector(msg, Object.values(reactions), member.user, async function(r) {
     const { player: { position: { x, y } } } = world;
     const direction = Object.keys(reactions).find(key => reactions[key] === r.emoji.name);
     const res = await handlePlace(direction);
     if (!res) return;
-    place(msg, ...res);
-    updateScene(msg, x, y);
+    place(...res);
+    await updateScene(msg, world, x, y);
   });
 }
 
+/**
+ * @desc Handles the placement event and check for any invalid block that could not be replaced.
+ * @param direction
+ * @returns {Promise<boolean|*>}
+ */
 async function handlePlace(direction) {
   const { blocks, player: { position, inventory } } = world;
   const { hotbar, selected } = inventory;
@@ -57,13 +67,15 @@ async function handlePlace(direction) {
     : false;
 }
 
-function place(msg, newX, newY, block) {
+/**
+ * @desc Places the block in the given position.
+ * @param newX
+ * @param newY
+ * @param block
+ */
+function place(newX, newY, block) {
   const { blocks } = world;
   blocks[newY][newX] = { name: block.name };
-}
-
-function updateScene(msg, newX, newY) {
-  return msg.edit(translateWorld(world, newX, newY));
 }
 
 module.exports = placement;

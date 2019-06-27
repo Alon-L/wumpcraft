@@ -4,6 +4,10 @@ const generate = require('../configs/generate');
 
 const maxOreLevel = 10;
 
+/**
+ * @desc Forbidden blocks to be around an ore block.
+ * @type {*[]}
+ */
 const forbiddenBlocks = [
   'sky',
   'lava',
@@ -12,23 +16,40 @@ const forbiddenBlocks = [
   undefined
 ];
 
+/**
+ * @desc All the ore types that must be included in a world.
+ * @type {string[]}
+ */
 const mustInclude = [
   'diamond',
   'iron'
 ];
 
+/**
+ * @desc Ore positions chart.
+ * @type {{'1': (function(*): number), '2': (function(*): *), '3': (function(*): *)}}
+ */
 const oresRandom = {
   '1': (x) => x - 1,
   '2': (x) => x,
   '3': (x) => x + 1
 };
 
+/**
+ * @desc Convert percentage chances into mathematical-based chances.
+ * @type {[string, any]}
+ */
 const chances = Object.entries(generate.percentages)
   .reduce((acc, curr) => {
     acc.push([curr[0], (acc[acc.length - 1] || [null, 0])[1] + curr[1]]);
     return acc;
   }, []);
 
+/**
+ * @desc Generates random types of ores in the world below y = 10.
+ * Finds for the environment around the randomly generated coordinate and checks if valid.
+ * @param blocks
+ */
 function generateOres(blocks) {
   const height = Number(Object.keys(blocks)[Object.keys(blocks).length - 1]);
   const width = longestArrayLength(Object.values(blocks));
@@ -71,6 +92,10 @@ function generateOres(blocks) {
     });
   }
 
+  /**
+   * @desc Finds a valid random coordinate in the map for the ores to sit at.
+   * @returns {{x, y}}
+   */
   function randomBlock() {
     const y = randNumberBetween(1, validBlocks.length);
     const row = blocks[y];

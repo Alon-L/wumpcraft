@@ -1,12 +1,34 @@
 const healthbarConf = require('../configs/healthbar');
+const { game: { player: { maxHearts } } } = require('../configs/default');
 const { emojiFormat } = require('../utils/generalMethods');
-const maxHearts = 10;
+const onDead = require('./events/onDead');
+const onDamage = require('./events/onDamage');
+const { getData } = require('../data');
 
-function healthbar(hearts) {
-  // TODO: Do something if hearts is 0.
+/**
+ * @desc Handles any changes in the player's health.
+ * @param hearts
+ * @param msg
+ * @param reason
+ * @returns {string|boolean|?}
+ */
+function healthbar(hearts, msg, reason) {
+  hearts = hearts < 0 ? 0 : hearts;
+  const d = getData(msg.author.id);
+  if (!d) return;
+
+  d.world.player.hearts = Math.floor(hearts);
+  if (hearts <= 0) return onDead(msg.member);
+  onDamage(msg, reason);
+
   return renderHealthbar(hearts);
 }
 
+/**
+ * @desc Render the healthbar hearts into the healthbar message.
+ * @param hearts
+ * @returns {string|string}
+ */
 function renderHealthbar(hearts) {
   let str = '';
   const emptyHearts = maxHearts - hearts;

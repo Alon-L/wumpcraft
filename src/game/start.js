@@ -1,0 +1,69 @@
+const fs = require('fs');
+const path = require('path');
+const worldExists = require('../world/worldExists');
+const { close, closeReactions } = require('./close');
+const create = require('./create');
+const createChannel = require('./createChannel');
+const renderHealthbar = require('../player/healthbar');
+const renderAchievements = require('../player/achievements/renderAchievements');
+const { hotbar: renderHotbar } = require('../player/hotbar');
+const translateWorld = require('../world/translateWorld');
+const movement = require('../physics/movement');
+const placement = require('../physics/placement');
+const { data, getData } = require('../data');
+
+async function start(client, msg) {
+  const channel = await createChannel(msg);
+
+  const world = getWorld(msg);
+
+  const d = getData(msg.author.id);
+  if (d && d.guildId === msg.guild.id) return msg.reply(`you already have an open game on ${channel}`);
+  // Close any open games on other servers by this user.
+  else if (d) close(0, 'New game instance was started.', world, msg.author, d.guildId, client.guilds);
+
+  msg.reply(`your game has been created in ${channel}`);
+
+  const [achievementsRender, worldRender, healthRender, hotbarRender] = await sendMessages(channel);
+
+  // Sets the data of this game view in the global data map.
+  data.set(msg.author.id,
+    {
+      guildId: msg.guild.id,
+      achievementsRender,
+      world,
+      worldRender,
+      hotbar: hotbarRender,
+      health: healthRender,
+      score: world.player.score,
+      collectors: [],
+      collected: {},
+      achievements: world.player.achievements
+    });
+
+  // Edit all the game view messages and start the game.
+  await achievementsRender.edit(renderAchievements(world.player.achievements));
+  await worldRender.edit(translateWorld(world, world.player.position.x, world.player.position.y));
+  await movement(msg);
+  await placement(msg.member);
+  await healthRender.edit(renderHealthbar(world.player.hearts, msg, 'initial'));
+  await renderHotbar(msg.author, world.player.inventory);
+  await closeReactions(worldRender, msg.member);
+}
+
+function getWorld(msg) {
+  return worldExists(msg.author.id)
+    ? JSON.parse(fs.readFileSync(path.join(__dirname + `../../saves/${msg.author.id}.json`)).toString())
+    : create(msg);
+}
+
+function sendMessages(channel) {
+  return Promise.all([
+    channel.start('Loading achievements...'),
+    channel.start('Loading game view...'),
+    channel.start('Loading healthbar...'),
+    channel.start('Loading hotbar...')
+  ]);
+}
+
+module.exports = start;

@@ -1,0 +1,110 @@
+[
+  {
+    "id": 1,
+    "title": "Axeman",
+    "desc": "Get a piece of log.",
+    "verify": {
+      "method": "get",
+      "block": "log",
+      "amount": 1
+    },
+    "score": 50
+  },
+  {
+    "id": 2,
+    "title": "Groundsman",
+    "desc": "Collect 10 leaves.",
+    "verify": {
+      "method": "get",
+      "block": "leaves",
+      "amount": 10
+    },
+    "score": 100
+  },
+  {
+    "id": 3,
+    "title": "Mermaid",
+    "desc": "Get into water.",
+    "verify": {
+      "method": "position",
+      "block": "water",
+      "below": 0
+    },
+    "score": 100
+  },
+  {
+    "id": 4,
+    "title": "Become Rich",
+    "desc": "Mine a diamond ore.",
+    "verify": {
+      "method": "get",
+      "block": "diamond",
+      "amount": 1
+    },
+    "score": 150
+  },
+  {
+    "id": 5,
+    "title": "Bird",
+    "desc": "Reach the sky limit.",
+    "verify": {
+      "method": "position",
+      "y": 29
+    },
+    "score": 150
+  },
+  {
+    "id": 6,
+    "title": "Explorer",
+    "desc": "Explore the desert.",
+    "verify": {
+      "method": "position",
+      "block": "sandstone",
+      "below": 1
+    },
+    "score": 100
+  },
+  {
+    "id": 7,
+    "title": "Hot Fool",
+    "desc": "Walk into lava.",
+    "verify": {
+      "method": "position",
+      "block": "lava",
+      "below": 0
+    },
+    "score": 150
+  },
+  {
+    "id": 8,
+    "title": "I Believe I Can Fly",
+    "desc": "Take fall damage.",
+    "verify": {
+      "method": "damage",
+      "reason": "fall"
+    },
+    "score": 100
+  },
+  {
+    "id": 9,
+    "title": "Princesses",
+    "desc": "Pick a flower.",
+    "verify": {
+      "method": "get",
+      "block": "flower",
+      "amount": 1
+    },
+    "score": 50
+  },
+  {
+    "id": 10,
+    "title": "No Life",
+    "desc": "Collect 128 stone blocks.",
+    "verify": {
+      "method": "get",
+      "block": "stone",
+      "amount": 128
+    },
+    "score": 250
+  }
+]
