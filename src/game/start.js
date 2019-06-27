@@ -22,7 +22,8 @@ async function start(client, msg) {
   // Close any open games on other servers by this user.
   else if (d) close(0, 'New game instance was started.', world, msg.author, d.guildId, client.guilds);
 
-  msg.reply(`your game has been created in ${channel}`);
+  msg.reply(`your game has been created in ${channel}`)
+    .then((msg) => msg.delete(10000));
 
   const [achievementsRender, worldRender, healthRender, hotbarRender] = await sendMessages(channel);
 
@@ -59,10 +60,10 @@ function getWorld(msg) {
 
 function sendMessages(channel) {
   return Promise.all([
-    channel.start('Loading achievements...'),
-    channel.start('Loading game view...'),
-    channel.start('Loading healthbar...'),
-    channel.start('Loading hotbar...')
+    channel.send('Loading achievements...'),
+    channel.send('Loading game view...'),
+    channel.send('Loading healthbar...'),
+    channel.send('Loading hotbar...')
   ]);
 }
 

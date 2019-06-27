@@ -21,7 +21,7 @@
     "no-underscore-dangle": "warn",
     "promise/param-names": "error",
     "promise/always-return": "error",
-    "promise/catch-or-return": "error",
+    "promise/catch-or-return": "warn",
     "promise/no-native": "off",
     "quotes": [
       2,
