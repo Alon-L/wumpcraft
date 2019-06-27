@@ -1,3 +1,6 @@
+const Discord = require('discord.js');
+const { embed: { colors: { main: color }, footer } } = require('../configs/default');
+
 class Help extends require('../types/Command') {
   constructor() {
     super();
@@ -5,21 +8,18 @@ class Help extends require('../types/Command') {
 
   async run(client, msg, args) {
     if (!args.length) {
-      this.commandNames = Array.from(client.commands.keys());
-      this.longest = this.commandNames.reduce((long, str) => Math.max(long, str.length), 0);
-      const commands = client.commands;
+      const commands = client.commands.sort((a, b) => a.help.priority - b.help.priority);
 
-      this.embed(
-        msg.channel,
-        `
-<:sk:592764148924809222>
-For arguments [] means required, <> means optional
-Use **${this.prefix}help <command>** for more details about that command.
+      const embedBuild = new Discord.RichEmbed()
+        .setTitle('Commands')
+        .setColor(color)
+        .setTimestamp()
+        .setFooter(footer);
+      commands.forEach(c => {
+        embedBuild.addField(`${this.prefix}${c.help.usage}`, c.help.description);
+      });
 
-${commands.map(c => `**${this.prefix}${c.help.usage}**${''.repeat(this.longest - c.help.name.length)} - ${c.help.description}`).join('\n')}
-        `,
-        'main',
-        'Commands');
+      msg.channel.send({ embed: embedBuild });
     } else {
       if (client.commands.has(args[0])) {
         const command = client.commands.get(args[0]);
@@ -37,13 +37,12 @@ ${commands.map(c => `**${this.prefix}${c.help.usage}**${''.repeat(this.longest -
 module.exports = {
   run: Help,
   conf: {
-    aliases: [],
-    permLevel: 0
+    aliases: []
   },
   help: {
-    name: `help`,
-    description: `Get some information about the commands.`,
-    usage: `help <command>`,
-    helpSection: 'normal'
+    name: 'help',
+    description: 'Lists all the commands.',
+    usage: 'help <command>',
+    priority: 3
   }
 };

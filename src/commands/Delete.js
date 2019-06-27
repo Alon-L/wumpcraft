@@ -10,7 +10,7 @@ class Delete extends require('../types/Command') {
     super();
   }
 
-  async run(client, msg, args) {
+  async run(client, msg) {
     if (!worldExists(msg.author.id)) return msg.reply(`
 You do not have a saved world.
 You can create one by typing \`${this.prefix}play\`.
@@ -22,8 +22,9 @@ Are you sure you want to delete your world?
 React with ✅ to confirm.
     `);
     await addReactions(reply, '✅');
-    reactionCollector(reply, ['✅'], msg.author, (r) => {
+    reactionCollector(reply, ['✅'], msg.author, () => {
       reply.delete();
+      msg.delete();
       Delete.confirmed(msg.member);
     }, { time: 10000 }, () => reply.delete(), false);
   }
@@ -39,12 +40,11 @@ module.exports = {
   run: Delete,
   conf: {
     aliases: [],
-    permLevel: 0
   },
   help: {
-    name: `delete`,
-    description: ``,
-    usage: `delete`,
-    helpSection: 'normal'
+    name: 'delete',
+    description: 'Deletes your world.',
+    usage: 'delete',
+    priority: 1
   }
 };

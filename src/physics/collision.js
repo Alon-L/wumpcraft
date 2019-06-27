@@ -31,7 +31,7 @@ function collision(msg, hotbar, x, y) {
     const blockInfo = getBlockInfo(block);
     if (blockInfo.mineable && blockInfo.type === 'block') {
       // New item is added to the player's inventory.
-      onGetBlock(msg, block.name);
+      onGetBlock(msg, block);
       addItem(inventory, block.name);
       block.name = defaultBlock;
     }
@@ -39,9 +39,25 @@ function collision(msg, hotbar, x, y) {
   });
   hotbar.edit(renderHotbar(inventory));
 
+  floatBlocks(blocks, x, y + 1);
+  floatBlocks(blocks, x, y + 2);
+
   // If block is mineable by the player.
   return collisionBlocks.blocksInfo
     .some(block => block.type === 'block' && !block.mineable && block.collision.player);
+}
+
+/**
+ * @desc Checks and destroy all blocks that can not float and do not have a block under them.
+ * @param blocks
+ * @param x
+ * @param y
+ */
+function floatBlocks(blocks, x, y) {
+  const block = findBlock(blocks, x, y);
+  if (!getBlockInfo(block).float && findBlock(blocks, x, y - 1).name === defaultBlock) {
+    block.name = defaultBlock;
+  }
 }
 
 module.exports = collision;

@@ -1,14 +1,12 @@
+const { version } = require('../../package');
+
 module.exports = {
   prefix: '!',
   embed: {
     colors: {
-      error: '0xd30202',
-      warn: '0xf7c820',
-      success: '0x54d62c',
-      main: '0x4286f4',
-      log: '0x42b3f4'
+      main: '87a8e0',
     },
-    footer: 'Hack Week'
+    footer: `Hack Week | v${version}`
   },
   game: {
     channels: {

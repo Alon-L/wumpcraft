@@ -1,3 +1,4 @@
+const { game: { blocks: { default: defaultBlock } } } = require('../configs/default');
 const updateScene = require('../game/updateScene');
 const addReactions = require('../utils/reactions/addReactions');
 const reactionCollector = require('../utils/reactions/reactionCollector');
@@ -5,8 +6,6 @@ const { findBlock, getBlockInfo } = require('../world/blockMethods');
 const removeItem = require('../player/inventory/removeItem');
 const { renderHotbar } = require('../player/hotbar');
 const { getData } = require('../data');
-
-let world, hotbarMsg, msg;
 
 const reactions = {
   left: '◀',
@@ -31,36 +30,40 @@ const directions = {
 async function placement(member) {
   const d = getData(member.id);
   if (!d) return;
-  world = d.world;
-  hotbarMsg = d.hotbar;
-  msg = d.worldRender;
+
+  const { world, worldRender: msg } = d;
 
   await addReactions(msg, ...Object.values(reactions));
-
   reactionCollector(msg, Object.values(reactions), member.user, async function(r) {
     const { player: { position: { x, y } } } = world;
     const direction = Object.keys(reactions).find(key => reactions[key] === r.emoji.name);
-    const res = await handlePlace(direction);
+    const res = await handlePlace(direction, d);
     if (!res) return;
-    place(...res);
-    await updateScene(msg, world, x, y);
+    place(...res, world);
+    await updateScene(msg, member.id, world, x, y);
   });
 }
 
 /**
  * @desc Handles the placement event and check for any invalid block that could not be replaced.
  * @param direction
+ * @param d
  * @returns {Promise<boolean|*>}
  */
-async function handlePlace(direction) {
+async function handlePlace(direction, { collected, world, hotbar: hotbarMsg }) {
   const { blocks, player: { position, inventory } } = world;
   const { hotbar, selected } = inventory;
   const x = position.x;
   const y = position.y;
   const [newX, newY] = directions[direction](x, y);
   const block = JSON.parse(JSON.stringify(hotbar[selected]));
+  const blockInfo = getBlockInfo(block);
+  // Block is not replaceable.
   if (!getBlockInfo(findBlock(blocks, newX, newY)).replaceable) return false;
-  if (!removeItem(hotbar, selected)) return false;
+  // Remove the block from the hotbar. If failed cancel the event.
+  if (!removeItem({ world, collected }, selected, 1)) return false;
+  // Cancel the place event if block can not float and there is no block below it.
+  if (findBlock(blocks, newX, newY - 1).name === defaultBlock && !blockInfo.float) return false;
   hotbarMsg.edit(renderHotbar(inventory));
   return getBlockInfo(findBlock(blocks, newX, newY)).replaceable
     ? [ newX, newY, block ]
@@ -72,10 +75,11 @@ async function handlePlace(direction) {
  * @param newX
  * @param newY
  * @param block
+ * @param world
  */
-function place(newX, newY, block) {
+function place(newX, newY, block, world) {
   const { blocks } = world;
-  blocks[newY][newX] = { name: block.name };
+  blocks[newY][newX] = { name: block.name, placed: true };
 }
 
 module.exports = placement;

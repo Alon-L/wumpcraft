@@ -5,21 +5,20 @@ class Ping extends Command {
     super();
   }
 
-  run(client, msg, args) {
-    this.embed(msg.channel, `Pong! *${client.ping}ms*`, 'main');
+  run(client, msg) {
+    this.embed(msg.channel, `Pong! *${Math.round(client.ping)}ms*`, 'main');
   }
 }
 
 module.exports = {
   run: Ping,
   conf: {
-    aliases: [],
-    permLevel: 0
+    aliases: []
   },
   help: {
-    name: `ping`,
-    description: `Pong.`,
-    usage: `ping`,
-    helpSection: 'normal'
+    name: 'ping',
+    description: 'Replies with the bot reaction time.',
+    usage: 'ping',
+    priority: 4
   }
 };

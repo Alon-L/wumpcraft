@@ -14,7 +14,7 @@ async function addAchievement(member, id) {
   const d = getData(member.id);
   if (!d) return;
 
-  let { achievements, achievementsRender, world } = d;
+  const { achievements, achievementsRender, world } = d;
 
   achievementsConf.forEach(({ id: _id, score }) => {
     if (_id === id) world.player.score.push(score);
@@ -31,12 +31,12 @@ async function addAchievement(member, id) {
  * @param d
  * @param member
  */
-function achievementsComplete(d, member) {
+function achievementsComplete({ world, achievements }, member) {
   close(20000, `
 Congratulations!
 You have completed all ${achievements.length} achievements and beat the game!
 Your score: {SCORE}
-    `, d.world, member);
+    `, world, member);
   deleteWorld(member.id);
 }
 

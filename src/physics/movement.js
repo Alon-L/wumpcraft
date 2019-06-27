@@ -1,5 +1,3 @@
-const path = require('path');
-const fs = require('fs');
 const { fallDamage } = require('../configs/player');
 const updateScene = require('../game/updateScene');
 const renderHealthbar = require('../player/healthbar');
@@ -34,21 +32,16 @@ const directions = {
   down: (x, y) => [x, y - 1]
 };
 
-let world, healthbar, hotbar, worldRender, msg;
-
 /**
  * @desc Adds the ability to move using the reactions.
  * @returns {Promise<void>}
- * @param _msg
+ * @param msg
  */
-async function movement(_msg) {
-  const d = getData(_msg.author.id);
+async function movement(msg) {
+  const d = getData(msg.author.id);
   if (!d) return;
-  world = d.world;
-  healthbar = d.health;
-  hotbar = d.hotbar;
-  worldRender = d.worldRender;
-  msg = _msg;
+
+  const { worldRender } = d;
 
   await addReactions(worldRender, ...Object.values(reactions));
 
@@ -60,15 +53,18 @@ async function movement(_msg) {
     if (crossPath) {
       return crossPath.forEach(async c => await getDirection({ emoji: { name: reactions[c] } }))
     }
-    await handleMovement(direction);
+    await handleMovement(direction, msg, d);
   }
 }
 
 /**
  * @desc Calculates where the player should be at after they move.
  * @param direction
+ * @param msg
+ * @param d
  */
-async function handleMovement(direction) {
+async function handleMovement(direction, msg, d) {
+  const { world, health, hotbar } = d;
   const { blocks, player: { position } } = world;
 
   const height = Number(Object.keys(blocks)[Object.keys(blocks).length - 1]);
@@ -82,7 +78,7 @@ async function handleMovement(direction) {
 
   // Check for block collision. Don't move if block is not mineable.
   if (collision(msg, hotbar, newX, newY)) return;
-  await move(newX, newY);
+  await move(newX, newY, msg, d);
 
 
   // Check for gravity. Keep falling as long as there is not a solid block under the player.
@@ -90,7 +86,7 @@ async function handleMovement(direction) {
   for (let i = newY, j = 1; i > 1 && gravity(world, newX, i); i--, j++) {
     const y = i - 1;
     if (collision(msg, hotbar, newX, y)) break;
-    await move(newX, y);
+    await move(newX, y, msg, d);
     fallDamageTaken = j;
     // Reset fall damage when touching liquid.
     if (getBlockInfo(findBlock(blocks, newX, y)).liquid) fallDamageTaken = 0;
@@ -98,9 +94,9 @@ async function handleMovement(direction) {
 
   if (fallDamageTaken >= fallDamage.min) {
     const hearts = world.player.hearts - fallDamage.lives(fallDamageTaken);
-    const health = renderHealthbar(hearts, msg, 'fall');
-    if (health) {
-      await healthbar.edit(health);
+    const healthRender = renderHealthbar(hearts, msg, 'fall');
+    if (healthRender) {
+      await health.edit(healthRender);
     }
   }
 }
@@ -108,14 +104,13 @@ async function handleMovement(direction) {
 /**
  * @desc Moves the player and update the file and the scene.
  */
-async function move(newX, newY) {
+async function move(newX, newY, msg, { worldRender, health, world }) {
   const { position } = world.player;
   position.x = newX;
   position.y = newY;
 
-  fs.writeFileSync(path.join(__dirname, `../saves/${msg.author.id}.json`), JSON.stringify(world, null, 2));
-  await updateScene(worldRender, world, newX, newY);
-  onMove(msg, healthbar, newX, newY);
+  await updateScene(worldRender, msg.author.id, world, newX, newY);
+  onMove(msg, health, newX, newY);
 }
 
 module.exports = movement;

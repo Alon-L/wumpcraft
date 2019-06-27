@@ -5,20 +5,15 @@ const addAchievement = require('../achievements/addAchievement');
 const { getData } = require('../../data');
 const method = 'position';
 
-let msg, world, achievements;
-
-function onMove(_msg, healthbar, newX, newY) {
-  const d = getData(_msg.author.id);
+function onMove(msg, healthbar, newX, newY) {
+  const d = getData(msg.author.id);
   if (!d) return;
 
-  msg = _msg;
-  achievements = d.achievements;
-  world = d.world;
-  checkForAchievement(newX, newY);
-  blockHarm(healthbar);
+  checkForAchievement(newX, newY, msg, d);
+  blockHarm(healthbar, msg, d.world);
 }
 
-function checkForAchievement(newX, newY) {
+function checkForAchievement(newX, newY, msg, { achievements, world }) {
   for (const { verify: { method: _method, block, below, y }, id } of achievementsConf) {
     if (_method !== method) continue;
     if (achievements.includes(id)) continue;
@@ -34,9 +29,11 @@ function checkForAchievement(newX, newY) {
 /**
  * @desc Handles any damage caused by a certain type of block when the player moves.
  * @param healthbar
+ * @param msg
+ * @param world
  * @returns {Promise<void>}
  */
-async function blockHarm(healthbar) {
+async function blockHarm(healthbar, msg, world) {
   const { author } = msg;
   const { blocks, player: { position } } = world;
   for (let i = 0, block = _block(), headBlock = _headBlock();
@@ -44,7 +41,7 @@ async function blockHarm(healthbar) {
        i++, block = _block(), headBlock = _headBlock()
   ) {
     await new Promise((resolve) => {
-      setTimeout(resolve, 750);
+      setTimeout(resolve, 1500);
     });
 
     const blockDamage = block.harmful

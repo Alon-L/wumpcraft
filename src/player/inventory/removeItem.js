@@ -2,14 +2,15 @@ const { game: { blocks: { default: defaultBlock } } } = require('../../configs/d
 
 /**
  * @desc Remove an item from the player's inventory.
- * @param hotbar
+ * @param d
  * @param slotNumber
+ * @param amount
  * @returns {boolean}
  */
-function removeItem(hotbar, slotNumber) {
+function removeItem({ world: { player: { inventory: { hotbar } } }, collected }, slotNumber, amount) {
   const slot = hotbar[slotNumber];
   if (!slot.amount) return false;
-  slot.amount--;
+  slot.amount -= amount;
   // Sets the slot back to being empty if it has no blocks in it.
   if (!slot.amount) slot.name = defaultBlock;
   return true;

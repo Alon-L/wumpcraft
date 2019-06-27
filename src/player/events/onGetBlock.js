@@ -6,22 +6,25 @@ const method = 'get';
 /**
  * @desc Handles the event when a new block is added to the player's inventory.
  * @param msg
- * @param blockName
+ * @param block
  */
-function onGetBlock(msg, blockName) {
+function onGetBlock(msg, block) {
   const d = getData(msg.author.id);
   if (!d) return;
+
+  const { name: blockName } = block;
   const { collected, achievements } = d;
 
   // Add block to the collected object.
-  if (!collected[blockName]) collected[blockName] = 1;
-  else collected[blockName]++;
+  if (!block.placed) {
+    if (!collected[blockName]) collected[blockName] = 1;
+    else collected[blockName]++;
+  }
 
-  for (const { verify: { method: _method, block, amount }, id } of achievementsConf) {
+  for (const { verify: { method: _method, block: _block, amount }, id } of achievementsConf) {
     if (_method !== method) continue;
     if (achievements.includes(id)) continue;
-    if (collected[block] && collected[block] >= amount)
-      addAchievement(msg.member, id);
+    if (collected[_block] && collected[_block] >= amount) addAchievement(msg.member, id);
   }
 }
 

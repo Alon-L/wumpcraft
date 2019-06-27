@@ -2,9 +2,8 @@ const { emojiFormat } = require('../utils/generalMethods');
 const { getBlockInfo } = require('../world/blockMethods');
 const addReactions = require('../utils/reactions/addReactions');
 const reactionCollector = require('../utils/reactions/reactionCollector');
+const removeItem = require('../player/inventory/removeItem');
 const { getData } = require('../data');
-
-let msg;
 
 const reactions = {
   1: '1⃣',
@@ -12,7 +11,8 @@ const reactions = {
   3: '3⃣',
   4: '4⃣',
   5: '5⃣',
-  6: '6⃣'
+  6: '6⃣',
+  drop: '🗑'
 };
 
 /**
@@ -24,15 +24,19 @@ const reactions = {
 async function hotbar(author, inventory) {
   const d = getData(author.id);
   if (!d) return;
-  msg = d.hotbar;
+  const { hotbar: hotbarMsg } = d;
 
-  await msg.edit(renderHotbar(inventory));
-  await addReactions(msg, ...Object.values(reactions));
+  await hotbarMsg.edit(renderHotbar(inventory));
+  await addReactions(hotbarMsg, ...Object.values(reactions));
 
-  reactionCollector(msg, Object.values(reactions), author, function(r) {
+  reactionCollector(hotbarMsg, Object.values(reactions), author, function(r) {
     const slot = Object.keys(reactions).find(key => reactions[key] === r.emoji.name);
-    inventory.selected = Number(slot);
-    msg.edit(renderHotbar(inventory));
+    if (slot === 'drop') {
+      removeItem(d, inventory.selected, inventory.hotbar[inventory.selected].amount);
+    } else {
+      inventory.selected = Number(slot);
+    }
+    hotbarMsg.edit(renderHotbar(inventory));
   });
 }
 

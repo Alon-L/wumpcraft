@@ -5,7 +5,7 @@ class Play extends require('../types/Command') {
     super();
   }
 
-  async run(client, msg, args) {
+  async run(client, msg) {
     await start(client, msg);
   }
 }
@@ -13,13 +13,12 @@ class Play extends require('../types/Command') {
 module.exports = {
   run: Play,
   conf: {
-    aliases: [],
-    permLevel: 0
+    aliases: []
   },
   help: {
-    name: `play`,
-    description: ``,
-    usage: `play`,
-    helpSection: 'normal'
+    name: 'play',
+    description: 'Play your world.',
+    usage: 'play',
+    priority: 0
   }
 };

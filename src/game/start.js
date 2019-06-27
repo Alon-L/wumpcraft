@@ -12,6 +12,8 @@ const movement = require('../physics/movement');
 const placement = require('../physics/placement');
 const { data, getData } = require('../data');
 
+const instructions = fs.readFileSync(path.join(__dirname + '../../configs/instructions.txt')).toString();
+
 async function start(client, msg) {
   const channel = await createChannel(msg);
 
@@ -23,9 +25,9 @@ async function start(client, msg) {
   else if (d) close(0, 'New game instance was started.', world, msg.author, d.guildId, client.guilds);
 
   msg.reply(`your game has been created in ${channel}`)
-    .then((msg) => msg.delete(10000));
+    .then((reply) => reply.delete(10000) && msg.delete(10000));
 
-  const [achievementsRender, worldRender, healthRender, hotbarRender] = await sendMessages(channel);
+  const [instructions, achievementsRender, worldRender, healthRender, hotbarRender] = await sendMessages(channel);
 
   // Sets the data of this game view in the global data map.
   data.set(msg.author.id,
@@ -38,8 +40,10 @@ async function start(client, msg) {
       health: healthRender,
       score: world.player.score,
       collectors: [],
-      collected: {},
-      achievements: world.player.achievements
+      collected: world.player.collected,
+      channel,
+      achievements: world.player.achievements,
+      instructions
     });
 
   // Edit all the game view messages and start the game.
@@ -60,6 +64,7 @@ function getWorld(msg) {
 
 function sendMessages(channel) {
   return Promise.all([
+    channel.send(instructions),
     channel.send('Loading achievements...'),
     channel.send('Loading game view...'),
     channel.send('Loading healthbar...'),

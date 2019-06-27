@@ -1,5 +1,3 @@
-const Discord = require('discord.js');
-
 class Message extends require('../types/Events') {
   constructor() {
     super();
@@ -9,8 +7,6 @@ class Message extends require('../types/Events') {
     if (!msg.guild) return;
     if (msg.author.bot) return;
     if (msg.content === this.prefix) return;
-
-    const perms = client.permLevel(msg);
     if (!msg.content.startsWith(this.prefix)) return;
 
     const permissions = client.permissions(msg.guild.me);
@@ -28,11 +24,7 @@ class Message extends require('../types/Events') {
       cmd = commands.get(aliases.get(command));
     }
 
-    if (cmd) {
-      if (perms < cmd.conf.permLevel)
-        this.embed(msg.channel, 'Sufficient permissions to use this command', 'error');
-      else new cmd.run().run(client, msg, args);
-    }
+    if (cmd) new cmd.run().run(client, msg, args);
   }
 }
 

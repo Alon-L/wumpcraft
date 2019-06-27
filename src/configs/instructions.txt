@@ -1,0 +1,9 @@
+__Instructions:__
+View all the achievements you have done and the ones you are yet to complete in the achievements message. Beat the game by completing all 10 achievements.
+Use ↖ ⬅ ⬆ ⬇ ➡ ↗ to move around the map.
+Use ◀ 🔼🔽▶ to place the selected block in your hotbar.
+Use ❌ to close the game view and the channel.
+See your remaining health on the healthbar message. Your hearts do not regenerate.
+Next up is your hotbar. You have 6 different slots to hold as many items as you can find.
+Use :one: :two: :three: :four: :five: :six: to select a slot.
+Use :wastebasket: to delete all the items in your selected slot.

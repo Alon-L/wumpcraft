@@ -3,14 +3,12 @@ const Discord = require('discord.js');
 const { createData } = require('./src/data');
 const CommandsHandler = require('./src/handlers/CommandsHandler.js');
 const EventsHandler = require('./src/handlers/EventsHandler.js');
-const permLevel = require('./src/utils/permLevel');
 const permissions = require('./src/utils/permissions');
 
 const client = new Discord.Client();
 
 client.commands = new Discord.Collection();
 client.aliases = new Discord.Collection();
-client.permLevel = permLevel;
 client.permissions = permissions;
 
 function login() {

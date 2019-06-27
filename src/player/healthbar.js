@@ -4,6 +4,7 @@ const { emojiFormat } = require('../utils/generalMethods');
 const onDead = require('./events/onDead');
 const onDamage = require('./events/onDamage');
 const { getData } = require('../data');
+const updateScene = require('../game/updateScene');
 
 /**
  * @desc Handles any changes in the player's health.
@@ -18,8 +19,10 @@ function healthbar(hearts, msg, reason) {
   if (!d) return;
 
   d.world.player.hearts = Math.floor(hearts);
+  updateScene(d.worldRender, msg.author.id, d.world);
+
   if (hearts <= 0) return onDead(msg.member);
-  onDamage(msg, reason);
+  onDamage(msg.member, reason);
 
   return renderHealthbar(hearts);
 }

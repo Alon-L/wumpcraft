@@ -8,7 +8,8 @@
       "liquid": true
     },
     "replaceable": false,
-    "mineable": true
+    "mineable": true,
+    "float": true
   },
   "lapis": {
     "name": "la",
@@ -19,7 +20,8 @@
       "liquid": true
     },
     "replaceable": false,
-    "mineable": true
+    "mineable": true,
+    "float": true
   },
   "gold": {
     "name": "go",
@@ -30,7 +32,8 @@
       "liquid": true
     },
     "replaceable": false,
-    "mineable": true
+    "mineable": true,
+    "float": true
   },
   "emerald": {
     "name": "em",
@@ -41,7 +44,8 @@
       "liquid": true
     },
     "replaceable": false,
-    "mineable": true
+    "mineable": true,
+    "float": true
   },
   "coal": {
     "name": "co",
@@ -52,7 +56,8 @@
       "liquid": true
     },
     "replaceable": false,
-    "mineable": true
+    "mineable": true,
+    "float": true
   },
   "iron": {
     "name": "ir",
@@ -63,7 +68,8 @@
       "liquid": true
     },
     "replaceable": false,
-    "mineable": true
+    "mineable": true,
+    "float": true
   },
   "diamond": {
     "name": "di",
@@ -74,7 +80,8 @@
       "liquid": true
     },
     "replaceable": false,
-    "mineable": true
+    "mineable": true,
+    "float": true
   },
   "water": {
     "name": "wa",
@@ -86,7 +93,8 @@
     },
     "replaceable": true,
     "mineable": false,
-    "liquid": true
+    "liquid": true,
+    "float": true
   },
   "lava": {
     "name": "lv",
@@ -101,7 +109,8 @@
     "harmful": {
       "lives": 1
     },
-    "liquid": true
+    "liquid": true,
+    "float": true
   },
   "sandstone": {
     "name": "sd",
@@ -112,7 +121,8 @@
       "liquid": true
     },
     "replaceable": false,
-    "mineable": true
+    "mineable": true,
+    "float": true
   },
   "tall_grass": {
     "name": "ta",
@@ -123,7 +133,8 @@
       "liquid": false
     },
     "replaceable": true,
-    "mineable": false
+    "mineable": false,
+    "float": false
   },
   "flower": {
     "name": "fl",
@@ -134,7 +145,8 @@
       "liquid": true
     },
     "replaceable": false,
-    "mineable": true
+    "mineable": true,
+    "float": false
   },
   "dead_bush": {
     "name": "de",
@@ -145,7 +157,8 @@
       "liquid": true
     },
     "replaceable": false,
-    "mineable": true
+    "mineable": true,
+    "float": false
   },
   "stone": {
     "name": "st",
@@ -156,7 +169,8 @@
       "liquid": true
     },
     "replaceable": false,
-    "mineable": true
+    "mineable": true,
+    "float": true
   },
   "dirt": {
     "name": "dr",
@@ -167,7 +181,8 @@
       "liquid": true
     },
     "replaceable": false,
-    "mineable": true
+    "mineable": true,
+    "float": true
   },
   "grass": {
     "name": "gr",
@@ -178,7 +193,8 @@
       "liquid": true
     },
     "replaceable": false,
-    "mineable": true
+    "mineable": true,
+    "float": true
   },
   "leaves": {
     "name": "le",
@@ -189,7 +205,8 @@
       "liquid": true
     },
     "replaceable": false,
-    "mineable": true
+    "mineable": true,
+    "float": true
   },
   "log": {
     "name": "lo",
@@ -200,7 +217,8 @@
       "liquid": true
     },
     "replaceable": false,
-    "mineable": true
+    "mineable": true,
+    "float": true
   },
   "bedrock": {
     "name": "be",
@@ -211,7 +229,8 @@
       "liquid": true
     },
     "replaceable": false,
-    "mineable": false
+    "mineable": false,
+    "float": true
   },
   "sky": {
     "name": "sk",
@@ -222,6 +241,7 @@
       "liquid": false
     },
     "replaceable": true,
-    "mineable": false
+    "mineable": false,
+    "float": true
   }
 }
