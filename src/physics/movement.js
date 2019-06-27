@@ -5,6 +5,7 @@ const updateScene = require('../game/updateScene');
 const renderHealthbar = require('../player/healthbar');
 const addReactions = require('../utils/reactions/addReactions');
 const reactionCollector = require('../utils/reactions/reactionCollector');
+const { findBlock, getBlockInfo } = require('../world/blockMethods');
 const { longestArrayLength, findKeyByValue } = require('../utils/generalMethods');
 const collision = require('./collision');
 const gravity = require('./gravity');
@@ -87,9 +88,12 @@ async function handleMovement(direction) {
   // Check for gravity. Keep falling as long as there is not a solid block under the player.
   let fallDamageTaken;
   for (let i = newY, j = 1; i > 1 && gravity(world, newX, i); i--, j++) {
-    if (collision(msg, hotbar, newX, i - 1)) break;
-    await move(newX, i - 1);
+    const y = i - 1;
+    if (collision(msg, hotbar, newX, y)) break;
+    await move(newX, y);
     fallDamageTaken = j;
+    // Reset fall damage when touching liquid.
+    if (getBlockInfo(findBlock(blocks, newX, y)).liquid) fallDamageTaken = 0;
   }
 
   if (fallDamageTaken >= fallDamage.min) {

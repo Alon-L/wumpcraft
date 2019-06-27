@@ -45,8 +45,7 @@
     "minecraft"
   ],
   "devEngines": {
-    "node": ">=8.x",
-    "npm": ">=4.x"
+    "node": ">=10.x"
   },
   "dependencies": {
     "discord.js": "^11.4.2",
