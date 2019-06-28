@@ -40,7 +40,7 @@ async function placement(member) {
     const res = await handlePlace(direction, d);
     if (!res) return;
     place(...res, world);
-    await updateScene(msg, member.id, world, x, y);
+    await updateScene(d, msg, member.id, world, x, y);
   });
 }
 

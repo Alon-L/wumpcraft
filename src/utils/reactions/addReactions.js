@@ -5,11 +5,12 @@
  * @returns {Promise<void>}
  */
 async function addReactions(msg, ...reactions) {
-  const reactionsValues = Object.values(reactions);
-  for (let i = 0; i < reactionsValues.length; i++) {
+  for (let i = 0; i < reactions.length; i++) {
     try {
-      await msg.react(reactionsValues[i]);
-    } catch(err) {}
+      await msg.react(reactions[i]);
+    } catch(err) {
+      console.error(err);
+    }
   }
 }
 

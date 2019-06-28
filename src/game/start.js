@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const { game: { afk } } = require('../configs/default');
 const worldExists = require('../world/worldExists');
 const { close, closeReactions } = require('./close');
 const create = require('./create');
@@ -43,7 +44,8 @@ async function start(msg) {
       collected: world.player.collected,
       channel,
       achievements: world.player.achievements,
-      instructions
+      instructions,
+      expiry: Date.now() + afk
     });
 
   // Edit all the game view messages and start the game.
