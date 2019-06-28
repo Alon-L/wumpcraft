@@ -19,6 +19,6 @@ module.exports = {
     name: 'ping',
     description: 'Replies with the bot reaction time.',
     usage: 'ping',
-    priority: 4
+    priority: 6
   }
 };
