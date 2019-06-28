@@ -8,4 +8,7 @@ class Error extends require('../types/Events') {
   }
 }
 
-module.exports = Error;
+module.exports = {
+  run: Error,
+  name: 'error'
+};

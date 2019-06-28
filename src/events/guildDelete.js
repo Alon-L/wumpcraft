@@ -8,4 +8,7 @@ class GuildDelete extends require('../types/Events') {
   }
 }
 
-module.exports = GuildDelete;
+module.exports = {
+  run: GuildDelete,
+  name: 'guildDelete'
+};

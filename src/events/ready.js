@@ -35,4 +35,7 @@ class Ready extends require('../types/Events') {
   }
 }
 
-module.exports = Ready;
+module.exports = {
+  run: Ready,
+  name: 'ready'
+};

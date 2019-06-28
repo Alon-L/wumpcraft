@@ -8,4 +8,7 @@ class GuildCreate extends require('../types/Events') {
   }
 }
 
-module.exports = GuildCreate;
+module.exports = {
+  run: GuildCreate,
+  name: 'guildCreate'
+};

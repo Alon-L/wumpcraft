@@ -29,4 +29,7 @@ class Message extends require('../types/Events') {
   }
 }
 
-module.exports = Message;
+module.exports = {
+  run: Message,
+  name: 'message'
+};
