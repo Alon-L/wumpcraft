@@ -1,3 +1,4 @@
+const { game: { afk } } = require('../configs/default');
 const { fallDamage } = require('../configs/player');
 const updateScene = require('../game/updateScene');
 const renderHealthbar = require('../player/healthbar');
@@ -5,6 +6,7 @@ const addReactions = require('../utils/reactions/addReactions');
 const reactionCollector = require('../utils/reactions/reactionCollector');
 const { findBlock, getBlockInfo } = require('../world/blockMethods');
 const { longestArrayLength, findKeyByValue } = require('../utils/generalMethods');
+const checkAFK = require('../game/checkAFK');
 const collision = require('./collision');
 const gravity = require('./gravity');
 const onMove = require('../player/events/onMove');
@@ -107,6 +109,7 @@ async function move(newX, newY, msg, { worldRender, health, world }) {
   position.x = newX;
   position.y = newY;
 
+  checkAFK(world, afk, msg.member);
   await updateScene(worldRender, msg.author.id, world, newX, newY);
   onMove(msg, health, newX, newY);
 }

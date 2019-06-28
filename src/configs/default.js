@@ -21,6 +21,7 @@ module.exports = {
     },
     player: {
       maxHearts: 10
-    }
+    },
+    afk: 120 * 1000
   }
 };

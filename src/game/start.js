@@ -24,8 +24,7 @@ async function start(msg) {
 
   const channel = await createChannel(msg);
 
-  msg.channel.send(`🎮 Your game has been created in ${channel}`)
-    .then((reply) => reply.delete(10000));
+  msg.channel.send(`🎮 Your game has been created in ${channel}`);
 
   const [instructions, achievementsRender, worldRender, healthRender, hotbarRender] = await sendMessages(channel);
 

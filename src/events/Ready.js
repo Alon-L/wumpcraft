@@ -7,14 +7,20 @@ class Ready extends require('../types/Events') {
   }
 
   async init(client) {
+    this.client = client;
     console.log('Ready!');
     createEmojis(client.emojis);
 
-    client.user.setPresence({ game: { name: `${this.prefix}help | WumpCraft`, status: 'online' } });
-    /**
-     * @desc Deletes all expired game view channels.
-     */
-    client.guilds.forEach(guild => {
+    this.cleanChannels();
+    this.setPresence(client.guilds.size);
+    setInterval(this.setPresence, 1000 * 60 * 5, client.guilds.size);
+  }
+
+  /**
+   * @desc Deletes all expired game view channels.
+   */
+  cleanChannels() {
+    this.client.guilds.forEach(guild => {
       const category = guild.channels.find(c => c.type === 'category' && c.name === channels.category);
       if (category) {
         guild.channels.forEach(c => {
@@ -22,6 +28,10 @@ class Ready extends require('../types/Events') {
         });
       }
     });
+  }
+
+  setPresence(guilds) {
+    this.client.user.setPresence({ game: { name: `${guilds} servers | ${this.prefix}help`, status: 'online', type: 'WATCHING' } });
   }
 }
 

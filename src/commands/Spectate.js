@@ -15,8 +15,7 @@ class Spectate extends require('../types/Command') {
     await d.channel.overwritePermissions(msg.author, {
       READ_MESSAGES: true
     });
-    msg.channel.send(`🔭 You can now spectate ${name} in ${d.channel}`)
-      .then(reply => reply.delete(10000));
+    msg.channel.send(`🔭 You can now spectate ${name} in ${d.channel}`);
   }
 }
 
