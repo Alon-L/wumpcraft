@@ -38,8 +38,8 @@ The bot does not use any external APIs besides Discord.js.
 
 And much more!
 
-## Host
-To host the bot you will need to install NodeJS 10 or higher.
+## Deployment
+To deploy the bot you will need to install NodeJS 10 or higher.
 1. Run the next commands:
 ```console
 git clone https://github.com/DayColor/wumpcraft wumpcraft
@@ -51,40 +51,16 @@ npm install
 
 ## Permissions
 ### General Permissions
-Nested checkbox rendering would be nice (view the sourcer for this gist)
-- [ ] Administrator
-- [ ] View Audit Log
-- [ ] Manage Server
 - [x] Manage Roles
 - [x] Manage Channels
-- [ ] Kick Members
-- [ ] Ban Members
-- [ ] Create Instant Invite
-- [ ] Change Nickname
-- [ ] Manage Nicknames
-- [ ] Manage Emojis
-- [ ] Manage Webhooks
 - [x] View Channels
 
 ### Text Permissions
 - [x] Send Messages
-- [ ] Send TTS Messages
 - [x] Manage Messages
-- [ ] Embed Links
-- [ ] Attach Files
 - [x] Read Message History
-- [ ] Mention Everyone
 - [x] Use External Emojis
 - [x] Add Reactions
-
-### Voice Permissions
-- [ ] Connect
-- [ ] Speak
-- [ ] Mute Members
-- [ ] Deafen Members
-- [ ] Use Members
-- [ ] Use Voice Activity
-- [ ] Priority Speaker
 
 ## License
 [MIT](LICENSE)
