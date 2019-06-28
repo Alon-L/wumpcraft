@@ -8,7 +8,7 @@ const { longestArrayLength, findKeyByValue } = require('../utils/generalMethods'
 const collision = require('./collision');
 const gravity = require('./gravity');
 const onMove = require('../player/events/onMove');
-const { getData, data } = require('../data');
+const { getData } = require('../data');
 
 const reactions = {
   topleft: '↖',
