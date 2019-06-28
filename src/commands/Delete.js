@@ -24,8 +24,9 @@ React with ✅ to confirm.
     await addReactions(reply, '✅');
     reactionCollector(reply, ['✅'], msg.author, () => {
       Delete.confirmed(msg);
-    }, { time: 10000 }, () => {
       reply.edit('🗑 You have successfully deleted your world.');
+    }, { time: 10000 }, () => {
+      reply.clearReactions();
     }, false);
   }
 
