@@ -21,6 +21,12 @@ async function createChannel(msg) {
       id: msg.author.id,
       allow: ['READ_MESSAGES'],
       deny: ['SEND_MESSAGES']
+    }, {
+      id: msg.guild.id,
+      deny: ['READ_MESSAGES', 'ADD_REACTIONS']
+    }, {
+      id: msg.guild.me,
+      allow: ['READ_MESSAGES', 'SEND_MESSAGES', 'ADD_REACTIONS']
     }]);
 
   await channel.setParent(category.id);
