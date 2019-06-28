@@ -18,13 +18,13 @@ async function start(msg) {
   const world = getWorld(msg);
 
   const d = getData(msg.author.id);
-  if (d && d.guildId === msg.guild.id) return msg.reply('you already have an open game.');
+  if (d && d.guildId === msg.guild.id) return msg.channel.send('❌ You already have an open game.');
   // Close any open games on other servers by this user.
   else if (d) close(0, 'New game instance was started.', world, msg.author, d.guildId, msg.client.guilds);
 
   const channel = await createChannel(msg);
 
-  msg.reply(`your game has been created in ${channel}`)
+  msg.channel.send(`🎮 Your game has been created in ${channel}`)
     .then((reply) => reply.delete(10000));
 
   const [instructions, achievementsRender, worldRender, healthRender, hotbarRender] = await sendMessages(channel);

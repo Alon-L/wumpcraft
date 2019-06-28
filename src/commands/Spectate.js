@@ -7,14 +7,15 @@ class Spectate extends require('../types/Command') {
 
   async run(client, msg) {
     const member = msg.mentions.members.first();
-    if (!member) return msg.reply('please mention the member you wish to spectate on.');
+    if (!member) return msg.channel.send('❌ Please mention the member you wish to spectate on.');
     const name = `${member.displayName}#${member.user.discriminator}`;
     const d = getData(member.id);
-    if (!d) return msg.reply(`${name} does not have an active game view.`);
+    if (!d) return msg.channel.send(`❌
+ ${name} does not have an active game view.`);
     await d.channel.overwritePermissions(msg.author, {
       READ_MESSAGES: true
     });
-    msg.reply(`you can now spectate ${name} in ${d.channel}`)
+    msg.channel.send(`🔭 You can now spectate ${name} in ${d.channel}`)
       .then(reply => reply.delete(10000));
   }
 }

@@ -6,7 +6,7 @@ class Ping extends Command {
   }
 
   run(client, msg) {
-    this.embed(msg.channel, `Pong! *${Math.round(client.ping)}ms*`, 'main');
+    msg.channel.send(`⏱ Pong! \`${Math.round(client.ping)}\``);
   }
 }
 

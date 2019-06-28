@@ -11,9 +11,9 @@ class Delete extends require('../types/Command') {
   }
 
   async run(client, msg) {
-    if (!worldExists(msg.author.id)) return msg.reply(`
-You do not have a saved world.
-You can create one by typing \`${this.prefix}play\`.
+    if (!worldExists(msg.author.id)) return msg.channel.send(`
+❌ You do not have a saved world.
+You can create one by typing \`${this.prefix}play\`. 🎮
     `);
 
     const reply = await msg.reply(`

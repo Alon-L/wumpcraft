@@ -10,7 +10,8 @@ class Message extends require('../types/Events') {
     if (!msg.content.startsWith(this.prefix)) return;
 
     const permissions = client.permissions(msg.guild.me);
-    if (permissions.length) return msg.reply(`I can not perform this command due to missing permissions in this server:\n${permissions.join(', ')}`).catch(() => {});
+    if (permissions.length) return msg.channel.send(`❌
+ I can not perform this command due to missing permissions in this server:\n${permissions.join(', ')}`).catch(() => {});
 
     const command = msg.content.toLowerCase().split(' ')[0].slice(this.prefix.length);
     const args = msg.content.split(' ').slice(1);
