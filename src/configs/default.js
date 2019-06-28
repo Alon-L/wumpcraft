@@ -1,7 +1,7 @@
 const { version } = require('../../package');
 
 module.exports = {
-  prefix: '!',
+  prefix: 'w!',
   embed: {
     colors: {
       main: '87a8e0',

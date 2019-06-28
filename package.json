@@ -1,5 +1,5 @@
 {
-  "name": "hack-week",
+  "name": "wumpcraft",
   "version": "1.0.0",
   "main": "app.js",
   "author": {
@@ -12,11 +12,11 @@
     "start": "node app.js"
   },
   "bugs": {
-    "url": "https://github.com/DayColor/hack-week/issues"
+    "url": "https://github.com/DayColor/wumpcraft/issues"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/DayColor/hack-week"
+    "url": "https://github.com/DayColor/wumpcraft"
   },
   "lint-staged": {
     "*.{js,jsx}": [

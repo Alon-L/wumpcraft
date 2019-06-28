@@ -24,7 +24,6 @@ React with ✅ to confirm.
     await addReactions(reply, '✅');
     reactionCollector(reply, ['✅'], msg.author, () => {
       reply.delete();
-      msg.delete();
       Delete.confirmed(msg.member);
     }, { time: 10000 }, () => reply.delete(), false);
   }
@@ -43,7 +42,7 @@ module.exports = {
   },
   help: {
     name: 'delete',
-    description: 'Deletes your world.',
+    description: 'Delete your world.',
     usage: 'delete',
     priority: 1
   }

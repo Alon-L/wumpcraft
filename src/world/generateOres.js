@@ -22,7 +22,13 @@ const forbiddenBlocks = [
  */
 const mustInclude = [
   'diamond',
-  'iron'
+  'iron',
+  'redstone',
+  'lapis',
+  'gold',
+  'emerald',
+  'coal',
+  'diamond'
 ];
 
 /**

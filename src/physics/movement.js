@@ -8,7 +8,7 @@ const { longestArrayLength, findKeyByValue } = require('../utils/generalMethods'
 const collision = require('./collision');
 const gravity = require('./gravity');
 const onMove = require('../player/events/onMove');
-const { getData } = require('../data');
+const { getData, data } = require('../data');
 
 const reactions = {
   topleft: '↖',
@@ -46,14 +46,13 @@ async function movement(msg) {
   await addReactions(worldRender, ...Object.values(reactions));
 
   reactionCollector(worldRender, Object.values(reactions), msg.author, getDirection);
-
-  async function getDirection({ emoji: { name } }) {
+  function getDirection({ emoji: { name } }) {
     const direction = findKeyByValue(reactions, name);
     const crossPath = crossPaths[direction];
     if (crossPath) {
-      return crossPath.forEach(async c => await getDirection({ emoji: { name: reactions[c] } }))
+      return crossPath.forEach(c => getDirection({ emoji: { name: reactions[c] } }));
     }
-    await handleMovement(direction, msg, d);
+    handleMovement(direction, msg, getData(msg.author.id));
   }
 }
 
@@ -79,7 +78,6 @@ async function handleMovement(direction, msg, d) {
   // Check for block collision. Don't move if block is not mineable.
   if (collision(msg, hotbar, newX, newY)) return;
   await move(newX, newY, msg, d);
-
 
   // Check for gravity. Keep falling as long as there is not a solid block under the player.
   let fallDamageTaken;

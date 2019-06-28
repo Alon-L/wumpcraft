@@ -21,10 +21,16 @@ function onGetBlock(msg, block) {
     else collected[blockName]++;
   }
 
-  for (const { verify: { method: _method, block: _block, amount }, id } of achievementsConf) {
+  for (const { verify: { method: _method, block, amount }, id } of achievementsConf) {
     if (_method !== method) continue;
     if (achievements.includes(id)) continue;
-    if (collected[_block] && collected[_block] >= amount) addAchievement(msg.member, id);
+    let succeed = 0;
+    if (block instanceof Array && amount instanceof Array) {
+      for (let i = 0; i < block.length; i++) {
+        if (collected[block[i]] && collected[block[i]] >= amount[i]) succeed++;
+      }
+    } else if (collected[block] && collected[block] >= amount) return addAchievement(msg.member, id);
+    if (succeed >= block.length) addAchievement(msg.member, id);
   }
 }
 

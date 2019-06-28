@@ -87,7 +87,7 @@
   },
   {
     "id": 9,
-    "title": "Princesses",
+    "title": "Princess",
     "desc": "Pick a flower.",
     "verify": {
       "method": "get",
@@ -98,6 +98,44 @@
   },
   {
     "id": 10,
+    "title": "Miner",
+    "desc": "Get every type of ore.",
+    "verify": {
+      "method": "get",
+      "block": [
+        "iron",
+        "redstone",
+        "lapis",
+        "gold",
+        "emerald",
+        "coal",
+        "diamond"
+      ],
+      "amount": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    "score": 200
+  },
+  {
+    "id": 11,
+    "title": "A corner?",
+    "desc": "Get to the bottom left corner of the map.",
+    "verify": {
+      "method": "position",
+      "y": 2,
+      "x": 1
+    },
+    "score": 125
+  },
+  {
+    "id": 12,
     "title": "No Life",
     "desc": "Collect 128 stone blocks.",
     "verify": {

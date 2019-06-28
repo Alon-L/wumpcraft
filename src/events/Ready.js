@@ -1,6 +1,5 @@
-const { close } = require('../game/close');
 const { game: { channels } } = require('../configs/default');
-const { createEmojis, data } = require('../data');
+const { createEmojis } = require('../data');
 
 class Ready extends require('../types/Events') {
   constructor() {
@@ -11,6 +10,7 @@ class Ready extends require('../types/Events') {
     console.log('Ready!');
     createEmojis(client.emojis);
 
+    client.user.setPresence({ game: { name: `${this.prefix}help | WumpCraft`, status: 'online' } });
     /**
      * @desc Deletes all expired game view channels.
      */

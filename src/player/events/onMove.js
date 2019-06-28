@@ -14,10 +14,14 @@ function onMove(msg, healthbar, newX, newY) {
 }
 
 function checkForAchievement(newX, newY, msg, { achievements, world }) {
-  for (const { verify: { method: _method, block, below, y }, id } of achievementsConf) {
+  for (const { verify: { method: _method, block, below, y, x }, id } of achievementsConf) {
     if (_method !== method) continue;
     if (achievements.includes(id)) continue;
-    if (y) {
+    if (y && x) {
+      if (newY !== y || newX !== x) continue;
+    } else if (x) {
+      if (newX !== x) continue;
+    } else if (y) {
       if (newY !== y) continue;
     } else if (block && below !== undefined) {
       if (block !== findBlock(world.blocks, newX, newY - below).name) continue;

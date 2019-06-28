@@ -17,7 +17,11 @@ async function addAchievement(member, id) {
   const { achievements, achievementsRender, world } = d;
 
   achievementsConf.forEach(({ id: _id, score }) => {
-    if (_id === id) world.player.score.push(score);
+    if (_id === id) {
+      // console.log(world.player.time);
+      //const gainedScore = (score / (world.player.time / 60)) ^ (1 / 0.95);
+      world.player.score.push(score);
+    }
   });
 
   achievements.push(id);

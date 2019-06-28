@@ -40,7 +40,9 @@ function collision(msg, hotbar, x, y) {
   hotbar.edit(renderHotbar(inventory));
 
   floatBlocks(blocks, x, y + 1);
-  floatBlocks(blocks, x, y + 2);
+  if (y + 1 < Object.keys(blocks).length) {
+    floatBlocks(blocks, x, y + 2);
+  }
 
   // If block is mineable by the player.
   return collisionBlocks.blocksInfo

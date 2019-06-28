@@ -27,7 +27,7 @@ function reactionCollector(msg,
     if (!d) return;
     d.collectors.push(collector);
   }
-  collector.on('collect', async(r) => {
+  collector.on('collect', async (r) => {
     await r.remove(author);
     await callback(r);
   });

@@ -1,5 +1,5 @@
 __Instructions:__
-View all the achievements you have done and the ones you are yet to complete in the achievements message. Beat the game by completing all 10 achievements.
+View all the achievements you have done and the ones you are yet to complete in the achievements message. Beat the game by completing all 12 achievements.
 Use ↖ ⬅ ⬆ ⬇ ➡ ↗ to move around the map.
 Use ◀ 🔼🔽▶ to place the selected block in your hotbar.
 Use ❌ to close the game view and the channel.

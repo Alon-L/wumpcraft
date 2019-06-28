@@ -25,7 +25,7 @@ async function start(client, msg) {
   else if (d) close(0, 'New game instance was started.', world, msg.author, d.guildId, client.guilds);
 
   msg.reply(`your game has been created in ${channel}`)
-    .then((reply) => reply.delete(10000) && msg.delete(10000));
+    .then((reply) => reply.delete(10000));
 
   const [instructions, achievementsRender, worldRender, healthRender, hotbarRender] = await sendMessages(channel);
 
@@ -43,7 +43,7 @@ async function start(client, msg) {
       collected: world.player.collected,
       channel,
       achievements: world.player.achievements,
-      instructions
+      instructions,
     });
 
   // Edit all the game view messages and start the game.

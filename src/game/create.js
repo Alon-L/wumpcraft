@@ -20,12 +20,13 @@ function create(msg) {
     x = randomX(y);
     original.player.position = { y: y + 1, x };
   } catch(err) {
+    console.error(err);
   }
 
   generateOres(original.blocks);
 
   fs.writeFileSync(path.join(__dirname + `../../saves/${msg.author.id}.json`), JSON.stringify(original, null, 2));
-  return original;
+  return JSON.parse(JSON.stringify(original));
 }
 
 /**

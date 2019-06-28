@@ -35,7 +35,8 @@ async function close(delay, reason, world, member, guildId, guilds) {
 
   try {
     await channel.delete('Game over.');
-  } catch(err) {}
+  } catch(err) {
+  }
 }
 
 /**
@@ -59,17 +60,15 @@ async function closeReactions(msg, member) {
  * @param reason
  * @returns {Promise<any[]>}
  */
-function deleteMessages(d, reason) {
+async function deleteMessages(d, reason) {
   const { instructions, worldRender, achievementsRender, hotbar, health, score, collectors } = d;
   collectors.forEach(c => c.stop('Game over.'));
-  return Promise.all([
-    worldRender.clearReactions(),
-    worldRender.edit(reason.replace(/{SCORE}/gi, score.reduce((acc, curr) => acc + curr, 0))),
-    hotbar.delete(),
-    health.delete(),
-    achievementsRender.delete(),
-    instructions.delete()
-  ]);
+  await worldRender.clearReactions();
+  await hotbar.delete();
+  await health.delete();
+  await achievementsRender.delete();
+  await instructions.delete();
+  await worldRender.edit(reason.replace(/{SCORE}/gi, score.reduce((acc, curr) => acc + curr, 0)));
 }
 
 module.exports = {
