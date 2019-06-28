@@ -26,7 +26,7 @@ function checkForAchievement(newX, newY, msg, { achievements, world }) {
     } else if (block && below !== undefined) {
       if (block !== findBlock(world.blocks, newX, newY - below).name) continue;
     } else continue;
-    addAchievement(msg.member, id);
+    addAchievement(msg, id);
   }
 }
 

@@ -14,7 +14,7 @@ const { data, getData } = require('../data');
 
 const instructions = fs.readFileSync(path.join(__dirname + '../../configs/instructions.txt')).toString();
 
-async function start(client, msg) {
+async function start(msg) {
   const channel = await createChannel(msg);
 
   const world = getWorld(msg);
@@ -22,7 +22,7 @@ async function start(client, msg) {
   const d = getData(msg.author.id);
   if (d && d.guildId === msg.guild.id) return msg.reply(`you already have an open game on ${channel}`);
   // Close any open games on other servers by this user.
-  else if (d) close(0, 'New game instance was started.', world, msg.author, d.guildId, client.guilds);
+  else if (d) close(0, 'New game instance was started.', world, msg.author, d.guildId, msg.client.guilds);
 
   msg.reply(`your game has been created in ${channel}`)
     .then((reply) => reply.delete(10000));

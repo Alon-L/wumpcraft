@@ -24,14 +24,14 @@ React with ✅ to confirm.
     await addReactions(reply, '✅');
     reactionCollector(reply, ['✅'], msg.author, () => {
       reply.delete();
-      Delete.confirmed(msg.member);
+      Delete.confirmed(msg);
     }, { time: 10000 }, () => reply.delete(), false);
   }
 
-  static confirmed(member) {
-    const d = getData(member.id);
-    if (d) close(0, 'World deleted.', d.world, member);
-    deleteWorld(member.id);
+  static confirmed(msg) {
+    const d = getData(msg.member.id);
+    if (d) close(0, 'World deleted.', d.world, msg.member);
+    deleteWorld(msg.member.id);
   }
 }
 

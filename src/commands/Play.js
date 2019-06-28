@@ -6,7 +6,7 @@ class Play extends require('../types/Command') {
   }
 
   async run(client, msg) {
-    await start(client, msg);
+    await start(msg);
   }
 }
 

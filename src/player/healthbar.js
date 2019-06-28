@@ -21,8 +21,8 @@ function healthbar(hearts, msg, reason) {
   d.world.player.hearts = Math.floor(hearts);
   updateScene(d.worldRender, msg.author.id, d.world);
 
-  if (hearts <= 0) return onDead(msg.member);
-  onDamage(msg.member, reason);
+  if (hearts <= 0) return onDead(msg);
+  onDamage(msg, reason);
 
   return renderHealthbar(hearts);
 }

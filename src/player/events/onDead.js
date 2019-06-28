@@ -4,14 +4,14 @@ const deleteWorld = require('../../world/deleteWorld');
 
 /**
  * @desc Handles the event when a player dies.
- * @param member
+ * @param msg
  * @returns {boolean}
  */
-function onDead(member) {
-  const d = getData(member.id);
+function onDead(msg) {
+  const d = getData(msg.member.id);
   if (!d) return false;
-  close(20000, 'You Died! Game Over!\nScore: {SCORE}', d.world, member);
-  deleteWorld(member.id);
+  close(20000, 'You Died! Game Over!\nScore: {SCORE}', d.world, msg.member);
+  deleteWorld(msg.member.id);
   return false;
 }
 

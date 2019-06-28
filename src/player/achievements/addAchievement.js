@@ -6,20 +6,18 @@ const { getData } = require('../../data');
 
 /**
  * @desc Adds an achievement to the player and adds the achievement's score to their base score.
- * @param member
+ * @param msg
  * @param id
  * @returns {Promise<void>}
  */
-async function addAchievement(member, id) {
-  const d = getData(member.id);
+async function addAchievement(msg, id) {
+  const d = getData(msg.member.id);
   if (!d) return;
 
   const { achievements, achievementsRender, world } = d;
 
   achievementsConf.forEach(({ id: _id, score }) => {
     if (_id === id) {
-      // console.log(world.player.time);
-      //const gainedScore = (score / (world.player.time / 60)) ^ (1 / 0.95);
       world.player.score.push(score);
     }
   });
@@ -27,21 +25,25 @@ async function addAchievement(member, id) {
   achievements.push(id);
   await achievementsRender.edit(renderAchievements(achievements));
 
-  if (achievements.length === achievementsConf.length) achievementsComplete(d, member);
+  if (achievements.length === achievementsConf.length) achievementsComplete(d, msg);
 }
 
 /**
  * @desc Runs whenever all the achievements are complete by the player.
  * @param d
- * @param member
+ * @param msg
  */
-function achievementsComplete({ world, achievements }, member) {
+function achievementsComplete({ world, achievements }, msg) {
+  // eslint-disable-next-line promise/catch-or-return
   close(20000, `
 Congratulations!
 You have completed all ${achievements.length} achievements and beat the game!
 Your score: {SCORE}
-    `, world, member);
-  deleteWorld(member.id);
+    `, world, msg.member, undefined, undefined, true)
+  .then((keepPlaying) => {
+    // eslint-disable-next-line promise/always-return
+    if (!keepPlaying) deleteWorld(msg.member.id);
+  });
 }
 
 module.exports = addAchievement;

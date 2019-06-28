@@ -29,8 +29,8 @@ function onGetBlock(msg, block) {
       for (let i = 0; i < block.length; i++) {
         if (collected[block[i]] && collected[block[i]] >= amount[i]) succeed++;
       }
-    } else if (collected[block] && collected[block] >= amount) return addAchievement(msg.member, id);
-    if (succeed >= block.length) addAchievement(msg.member, id);
+    } else if (collected[block] && collected[block] >= amount) return addAchievement(msg, id);
+    if (succeed >= block.length) addAchievement(msg, id);
   }
 }
 

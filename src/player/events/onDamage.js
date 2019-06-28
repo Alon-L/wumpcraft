@@ -5,18 +5,18 @@ const method = 'damage';
 
 /**
  * @desc Handles the event when the player takes damage.
- * @param member
+ * @param msg
  * @param reason
  */
-function onDamage(member, reason) {
-  const d = getData(member.id);
+function onDamage(msg, reason) {
+  const d = getData(msg.member.id);
   if (!d) return;
   const { achievements } = d;
 
   for (const { verify: { method: _method, reason: _reason }, id } of achievementsConf) {
     if (_method !== method) continue;
     if (achievements.includes(id)) continue;
-    if (reason === _reason) addAchievement(member, id);
+    if (reason === _reason) addAchievement(msg, id);
   }
 }
 
