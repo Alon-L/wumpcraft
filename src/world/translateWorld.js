@@ -96,7 +96,7 @@ function translateWorld(world, x, y) {
       xAxis = x2 - 1;
     });
   return str.length > 0
-    ? str + `\n__Score:__ ${world.player.score.reduce((acc, curr) => acc + curr, 0)}\n${x} ${y}`
+    ? str + `\n__Score:__ ${world.player.score.reduce((acc, curr) => acc + curr, 0)}\nX: ${x} Y: ${y}`
     : 'An error has occurred';
 }
 
