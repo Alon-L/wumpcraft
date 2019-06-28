@@ -35,6 +35,7 @@ The bot does not use any external APIs besides Discord.js.
 * Auto-save the worlds.
 * Spectate other players while they are playing.
 * Multi-server support.
+
 And much more!
 
 ## Host
