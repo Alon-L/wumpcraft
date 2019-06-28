@@ -13,7 +13,7 @@ const { getData, data } = require('../data');
  * @param guilds
  * @returns {Promise<void>}
  */
-async function close(delay, reason, world, member, guildId, guilds, keepPlaying = false) {
+async function close(delay, reason, world, member, guildId, guilds) {
   if (guildId && guilds) {
     const guild = guilds.get(guildId);
     if (!guild) return;
@@ -21,7 +21,9 @@ async function close(delay, reason, world, member, guildId, guilds, keepPlaying 
   }
 
   const d = getData(member.id);
+  let channelId;
   if (d) {
+    channelId = d.channelId;
     data.delete(member.id);
     await deleteMessages(d, reason);
   }
@@ -30,9 +32,11 @@ async function close(delay, reason, world, member, guildId, guilds, keepPlaying 
     setTimeout(resolve, delay);
   });
 
+  if (!channelId) return;
   const channel = member.guild.channels
-    .find(c => c.type === 'text' && c.name === channelName(member));
+    .get(channelId);
 
+  if (!channel) return;
   try {
     await channel.delete('Game over.');
   } catch(err) {}
