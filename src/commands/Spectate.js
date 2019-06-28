@@ -15,7 +15,7 @@ class Spectate extends require('../types/Command') {
       READ_MESSAGES: true
     });
     msg.reply(`you can now spectate ${name} in ${d.channel}`)
-      .then(reply => reply.delete(10000) && msg.delete(10000));
+      .then(reply => reply.delete(10000));
   }
 }
 
