@@ -43,6 +43,6 @@ module.exports = {
     name: 'help',
     description: 'Lists all the commands.',
     usage: 'help <command>',
-    priority: 3
+    priority: 4
   }
 };

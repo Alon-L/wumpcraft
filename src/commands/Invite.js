@@ -29,6 +29,6 @@ module.exports = {
     name: 'invite',
     description: 'Sends the invitation link for the bot.',
     usage: 'invite',
-    priority: 4
+    priority: 5
   }
 };

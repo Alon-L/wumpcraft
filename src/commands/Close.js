@@ -24,6 +24,6 @@ module.exports = {
     name: 'close',
     description: 'Close your open game view.',
     usage: 'close',
-    priority: 5
+    priority: 3
   }
 };

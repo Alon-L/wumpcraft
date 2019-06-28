@@ -19,6 +19,6 @@ module.exports = {
     name: 'credits',
     description: 'Shows the credits for this bot.',
     usage: 'credits',
-    priority: 5
+    priority: 6
   }
 };
