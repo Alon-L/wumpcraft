@@ -45,7 +45,7 @@ git clone https://github.com/DayColor/wumpcraft wumpcraft
 cd wumpcraft
 npm install
 ```
-2. Edit ```'Your Token Goes Here'``` in app.js with your bot token.
+2. Replace ```'Your Token Goes Here'``` in app.js with your bot token.
 3. Run ```npm start```
 
 ## Permissions
