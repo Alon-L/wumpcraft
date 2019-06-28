@@ -23,7 +23,6 @@ React with ✅ to confirm.
     `);
     await addReactions(reply, '✅');
     reactionCollector(reply, ['✅'], msg.author, () => {
-      reply.delete();
       Delete.confirmed(msg);
     }, { time: 10000 }, () => reply.delete(), false);
   }
