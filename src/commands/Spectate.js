@@ -10,8 +10,7 @@ class Spectate extends require('../types/Command') {
     if (!member) return msg.channel.send('❌ Please mention the member you wish to spectate on.');
     const name = `${member.displayName}#${member.user.discriminator}`;
     const d = getData(member.id);
-    if (!d) return msg.channel.send(`❌
- ${name} does not have an active game view.`);
+    if (!d) return msg.channel.send(`❌ ${name} does not have an active game view.`);
     await d.channel.overwritePermissions(msg.author, {
       READ_MESSAGES: true
     });
