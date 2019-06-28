@@ -6,7 +6,7 @@ module.exports = {
     colors: {
       main: '87a8e0',
     },
-    footer: `Hack Week | v${version}`
+    footer: `WumpCraft | v${version}`
   },
   game: {
     channels: {

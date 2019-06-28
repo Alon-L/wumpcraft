@@ -9,6 +9,7 @@
     ],
     "achievements": [],
     "hearts": 10,
+    "collected": {},
     "inventory": {
       "hotbar": {
         "1": {
