@@ -75,22 +75,21 @@ function translateWorld(world, x, y) {
     .forEach((row) => {
       // Loop through the map blocks ranging between the two x points.
       str += Object.values(getInRange(x2, x1, row))
-          .map((block) => {
+          .reduce((acc, block) => {
             xAxis++;
             // Determine if the spot deserves a normal block or the player entity.
             if (Number(yAxis) === y && Number(xAxis) === x) {
-              return emojiFormat(playerInfo.body.id);
+              return acc += emojiFormat(playerInfo.body.id);
             }
             if (Number(yAxis) === y + 1 && Number(xAxis) === x) {
-              return emojiFormat(playerInfo.skull.id);
+              return acc += emojiFormat(playerInfo.skull.id);
             }
             if (blockExists(block)) {
               const blockInfo = getBlockInfo(block);
               if (blockInfo.liquid) liquid(blocks, block, blockInfo, xAxis, yAxis);
-              return emojiFormat(blockInfo.id);
+              return acc += emojiFormat(blockInfo.id);
             }
-          })
-          .join(' ')
+          }, '')
         + '\n';
       yAxis--;
       xAxis = x2 - 1;
