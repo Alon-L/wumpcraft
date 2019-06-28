@@ -7,20 +7,19 @@ class Ready extends require('../types/Events') {
   }
 
   async init(client) {
-    this.client = client;
     console.log('Ready!');
     createEmojis(client.emojis);
 
-    this.cleanChannels();
-    this.setPresence(client.guilds.size);
+    this.cleanChannels(client);
+    this.setPresence(client);
     setInterval(this.setPresence, 1000 * 60 * 5, client.guilds.size);
   }
 
   /**
    * @desc Deletes all expired game view channels.
    */
-  cleanChannels() {
-    this.client.guilds.forEach(guild => {
+  cleanChannels(client) {
+    client.guilds.forEach(guild => {
       const category = guild.channels.find(c => c.type === 'category' && c.name === channels.category);
       if (category) {
         guild.channels.forEach(c => {
@@ -30,8 +29,8 @@ class Ready extends require('../types/Events') {
     });
   }
 
-  setPresence(guilds) {
-    this.client.user.setPresence({ game: { name: `${guilds} servers | ${this.prefix}help`, status: 'online', type: 'WATCHING' } });
+  setPresence(client) {
+    client.user.setPresence({ game: { name: `${client.guilds.size} servers | ${this.prefix}help`, status: 'online', type: 'WATCHING' } });
   }
 }
 
