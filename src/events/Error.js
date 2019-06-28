@@ -3,7 +3,7 @@ class Error extends require('../types/Events') {
     super();
   }
 
-  init(error) {
+  init(client, error) {
     console.error(error);
   }
 }
