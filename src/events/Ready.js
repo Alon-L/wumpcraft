@@ -12,9 +12,9 @@ class Ready extends require('../types/Events') {
     createEmojis(client.emojis);
 
     this.cleanChannels(client);
-    this.setPresence(client);
+    Ready.setPresence(client, this.prefix);
+    setInterval(Ready.setPresence, 1000 * 60 * 5, client, this.prefix);
     setInterval(Ready.checkAFK, 1000 * 10, client);
-    setInterval(this.setPresence, 1000 * 60 * 5, client);
   }
 
   /**
@@ -36,8 +36,8 @@ class Ready extends require('../types/Events') {
    * @desc Sets the client presence matching the amount of guilds it is in.
    * @param client
    */
-  setPresence(client) {
-    client.user.setPresence({ game: { name: `${client.guilds.size} servers | ${this.prefix}help`, status: 'online', type: 'WATCHING' } });
+  static setPresence(client, prefix) {
+    client.user.setPresence({ game: { name: `${client.guilds.size} servers | ${prefix}help`, status: 'online', type: 'WATCHING' } });
   }
 
   static checkAFK(client) {
@@ -46,7 +46,7 @@ class Ready extends require('../types/Events') {
     for (const authorId of keys) {
       const d = data.get(authorId);
       if (d.expiry <= Date.now()) {
-        close(0, 'Member is AFK.', d.world, client.users.get(authorId), d.guildId, client.guilds);
+        close(0, 'User is AFK.', d.world, client.users.get(authorId), d.guildId, client.guilds);
       }
     }
   }

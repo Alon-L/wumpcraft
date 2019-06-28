@@ -19,9 +19,7 @@ function create(msg) {
   try {
     x = randomX(y);
     original.player.position = { y: y + 1, x };
-  } catch(err) {
-    console.error(err);
-  }
+  } catch(err) {}
 
   generateOres(original.blocks);
 

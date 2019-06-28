@@ -18,6 +18,7 @@ async function close(delay, reason, world, member, guildId, guilds) {
     const guild = guilds.get(guildId);
     if (!guild) return;
     member = await guild.fetchMember(member);
+    if (!member) return;
   }
 
   const d = getData(member.id);
