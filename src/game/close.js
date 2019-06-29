@@ -22,9 +22,9 @@ async function close(delay, reason, world, member, guildId, guilds) {
   }
 
   const d = getData(member.id);
-  let channelId;
+  let channel;
   if (d) {
-    channelId = d.channelId;
+    channel = d.channel;
     data.delete(member.id);
     await deleteMessages(d, reason);
   }
@@ -32,10 +32,6 @@ async function close(delay, reason, world, member, guildId, guilds) {
   await new Promise(resolve => {
     setTimeout(resolve, delay);
   });
-
-  if (!channelId) return;
-  const channel = member.guild.channels
-    .get(channelId);
 
   if (!channel) return;
   try {

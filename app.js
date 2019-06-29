@@ -19,7 +19,3 @@ login();
 createData();
 new CommandsHandler(client).load();
 new EventsHandler(client).load();
-
-process.on('unhandledRejection', (reason, p) => {
-  console.log('Unhandled Rejection at: Promise', p, 'reason:', reason);
-});

@@ -33,7 +33,6 @@ async function start(msg) {
   data.set(msg.author.id,
     {
       guildId: msg.guild.id,
-      channelId: channel.id,
       achievementsRender,
       world,
       worldRender,
