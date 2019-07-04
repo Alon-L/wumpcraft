@@ -24,22 +24,23 @@ function healthbar(hearts, msg, reason) {
   if (hearts <= 0) return onDead(msg);
   onDamage(msg, reason);
 
-  return renderHealthbar(hearts);
+  return renderHealthbar(msg.member, hearts);
 }
 
 /**
  * @desc Render the healthbar hearts into the healthbar message.
+ * @param member
  * @param hearts
  * @returns {string|string}
  */
-function renderHealthbar(hearts) {
+function renderHealthbar(member, hearts) {
   let str = '';
   const emptyHearts = maxHearts - hearts;
   for (let i = 0; i < hearts; i++) {
-    str += emojiFormat(healthbarConf.emojis.full.id);
+    str += emojiFormat(member, healthbarConf.emojis.full.name);
   }
   for (let i = 0; i < emptyHearts; i++) {
-    str += emojiFormat(healthbarConf.emojis.empty.id);
+    str += emojiFormat(member, healthbarConf.emojis.empty.name);
   }
   return str;
 }

@@ -37,7 +37,7 @@ function collision(msg, hotbar, x, y) {
     }
     collisionBlocks.blocksInfo.push(getBlockInfo(block));
   });
-  hotbar.edit(renderHotbar(inventory));
+  hotbar.edit(renderHotbar(msg.member, inventory));
 
   floatBlocks(blocks, x, y + 1);
   if (y + 1 < Object.keys(blocks).length) {

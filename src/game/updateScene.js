@@ -16,7 +16,7 @@ const { game: { afk } } = require('../configs/default');
 function updateScene(d, msg, memberId, world, newX, newY) {
   d.expiry = Date.now() + afk;
   fs.writeFileSync(path.join(__dirname, `../saves/${memberId}.json`), JSON.stringify(world, null, 2));
-  if (newX && newY) return msg.edit(translateWorld(world, newX, newY));
+  if (newX && newY) return msg.edit(translateWorld(d.member, world, newX, newY));
 }
 
 module.exports = updateScene;

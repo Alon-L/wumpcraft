@@ -1,7 +1,7 @@
 {
   "redstone": {
     "name": "re",
-    "id": "593132269053411338",
+    "path": "redstone",
     "type": "block",
     "collision": {
       "player": true,
@@ -13,7 +13,7 @@
   },
   "lapis": {
     "name": "la",
-    "id": "593132243346653196",
+    "path": "lapis",
     "type": "block",
     "collision": {
       "player": true,
@@ -25,7 +25,7 @@
   },
   "gold": {
     "name": "go",
-    "id": "593132223490949121",
+    "path": "gold",
     "type": "block",
     "collision": {
       "player": true,
@@ -37,7 +37,7 @@
   },
   "emerald": {
     "name": "em",
-    "id": "593132213294333962",
+    "path": "emerald",
     "type": "block",
     "collision": {
       "player": true,
@@ -49,7 +49,7 @@
   },
   "coal": {
     "name": "co",
-    "id": "593132196148019220",
+    "path": "coal",
     "type": "block",
     "collision": {
       "player": true,
@@ -61,7 +61,7 @@
   },
   "iron": {
     "name": "ir",
-    "id": "593134494316232724",
+    "path": "iron",
     "type": "block",
     "collision": {
       "player": true,
@@ -73,7 +73,7 @@
   },
   "diamond": {
     "name": "di",
-    "id": "593132100962615306",
+    "path": "diamond",
     "type": "block",
     "collision": {
       "player": true,
@@ -85,7 +85,7 @@
   },
   "water": {
     "name": "wa",
-    "id": "593479768469405696",
+    "path": "water",
     "type": "block",
     "collision": {
       "player": false,
@@ -98,7 +98,7 @@
   },
   "lava": {
     "name": "lv",
-    "id": "593479847305543723",
+    "path": "lava",
     "type": "block",
     "collision": {
       "player": false,
@@ -114,7 +114,7 @@
   },
   "sandstone": {
     "name": "sd",
-    "id": "593020554458431538",
+    "path": "sandstone",
     "type": "block",
     "collision": {
       "player": true,
@@ -126,7 +126,7 @@
   },
   "tall_grass": {
     "name": "ta",
-    "id": "593479816448049157",
+    "path": "tall_grass",
     "type": "block",
     "collision": {
       "player": false,
@@ -138,7 +138,7 @@
   },
   "flower": {
     "name": "fl",
-    "id": "593478278103433257",
+    "path": "flower",
     "type": "block",
     "collision": {
       "player": false,
@@ -150,7 +150,7 @@
   },
   "dead_bush": {
     "name": "de",
-    "id": "593024159085232138",
+    "path": "dead_bush",
     "type": "block",
     "collision": {
       "player": false,
@@ -162,7 +162,7 @@
   },
   "stone": {
     "name": "st",
-    "id": "592759753248079872",
+    "path": "stone",
     "type": "block",
     "collision": {
       "player": true,
@@ -174,7 +174,7 @@
   },
   "dirt": {
     "name": "dr",
-    "id": "592759691784749076",
+    "path": "dirt",
     "type": "block",
     "collision": {
       "player": true,
@@ -186,7 +186,7 @@
   },
   "grass": {
     "name": "gr",
-    "id": "592759726065057807",
+    "path": "grass",
     "type": "block",
     "collision": {
       "player": true,
@@ -198,7 +198,7 @@
   },
   "leaves": {
     "name": "le",
-    "id": "593479918994718728",
+    "path": "leaves",
     "type": "block",
     "collision": {
       "player": true,
@@ -210,7 +210,7 @@
   },
   "log": {
     "name": "lo",
-    "id": "592764545513029672",
+    "path": "log",
     "type": "block",
     "collision": {
       "player": true,
@@ -222,7 +222,7 @@
   },
   "bedrock": {
     "name": "be",
-    "id": "592759776606290000",
+    "path": "bedrock",
     "type": "block",
     "collision": {
       "player": true,
@@ -234,7 +234,7 @@
   },
   "sky": {
     "name": "sk",
-    "id": "592764148924809222",
+    "path": "sky",
     "type": null,
     "collision": {
       "player": false,

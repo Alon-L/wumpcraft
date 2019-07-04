@@ -37,7 +37,7 @@ async function placement(member) {
   reactionCollector(msg, Object.values(reactions), member.user, async function(r) {
     const { player: { position: { x, y } } } = world;
     const direction = Object.keys(reactions).find(key => reactions[key] === r.emoji.name);
-    const res = await handlePlace(direction, d);
+    const res = await handlePlace(member, direction, d);
     if (!res) return;
     place(...res, world);
     await updateScene(d, msg, member.id, world, x, y);
@@ -46,11 +46,12 @@ async function placement(member) {
 
 /**
  * @desc Handles the placement event and check for any invalid block that could not be replaced.
+ * @param member
  * @param direction
  * @param d
  * @returns {Promise<boolean|*>}
  */
-async function handlePlace(direction, { collected, world, hotbar: hotbarMsg }) {
+async function handlePlace(member, direction, { collected, world, hotbar: hotbarMsg }) {
   const { blocks, player: { position, inventory } } = world;
   const { hotbar, selected } = inventory;
   const x = position.x;
@@ -64,7 +65,7 @@ async function handlePlace(direction, { collected, world, hotbar: hotbarMsg }) {
   if (!removeItem({ world, collected }, selected, 1)) return false;
   // Cancel the place event if block can not float and there is no block below it.
   if (findBlock(blocks, newX, newY - 1).name === defaultBlock && !blockInfo.float) return false;
-  hotbarMsg.edit(renderHotbar(inventory));
+  hotbarMsg.edit(renderHotbar(member, inventory));
   return getBlockInfo(findBlock(blocks, newX, newY)).replaceable
     ? [ newX, newY, block ]
     : false;

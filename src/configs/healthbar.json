@@ -2,11 +2,11 @@
   "emojis": {
     "full": {
       "name": "fh",
-      "id": "593481560796430336"
+      "path": "full_heart"
     },
     "empty": {
       "name": "eh",
-      "id": "593481437936615425"
+      "path": "empty_heart"
     }
   }
 }

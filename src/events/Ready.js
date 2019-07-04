@@ -1,6 +1,7 @@
 const { close } = require('../game/close');
 const { game: { channels } } = require('../configs/default');
 const { data, createEmojis } = require('../data');
+const uploadEmojis = require('../utils/uploadEmojis');
 
 class Ready extends require('../types/Events') {
   constructor() {
@@ -15,7 +16,14 @@ class Ready extends require('../types/Events') {
     Ready.setPresence(client, this.prefix);
     setInterval(Ready.setPresence, 1000 * 60 * 5, client, this.prefix);
     setInterval(Ready.checkAFK, 1000 * 10, client);
+
+    client.guilds.forEach(guild => {
+      if (guild.me.permissions.has('MANAGE_EMOJIS')) {
+        uploadEmojis(guild);
+      }
+    });
   }
+
 
   /**
    * @desc Deletes all expired game view channels.
@@ -35,6 +43,7 @@ class Ready extends require('../types/Events') {
   /**
    * @desc Sets the client presence matching the amount of guilds it is in.
    * @param client
+   * @param prefix
    */
   static setPresence(client, prefix) {
     client.user.setPresence({ game: { name: `${client.guilds.size} servers | ${prefix}help`, status: 'online', type: 'WATCHING' } });

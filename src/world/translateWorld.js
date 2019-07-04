@@ -20,12 +20,13 @@ const rowsInViewHalf = Math.floor(rowsInView / 2);
 
 /**
  * @desc Convert the world's json format into plain text with Discord based emojis. Also changes the view around the player based on their coordinates.
+ * @param member
  * @param world {Object}
  * @param x {Number}
  * @param y {Number}
  * @returns {string} - Discord formatted for all the emojis.
  */
-function translateWorld(world, x, y) {
+function translateWorld(member, world, x, y) {
   const { blocks } = world;
   const height = Number(Object.keys(blocks)[Object.keys(blocks).length - 1]);
   const width = longestArrayLength(Object.values(blocks));
@@ -79,15 +80,15 @@ function translateWorld(world, x, y) {
             xAxis++;
             // Determine if the spot deserves a normal block or the player entity.
             if (Number(yAxis) === y && Number(xAxis) === x) {
-              return acc += emojiFormat(playerInfo.body.id);
+              return acc += emojiFormat(member, playerInfo.body.name);
             }
             if (Number(yAxis) === y + 1 && Number(xAxis) === x) {
-              return acc += emojiFormat(playerInfo.skull.id);
+              return acc += emojiFormat(member, playerInfo.skull.name);
             }
             if (blockExists(block)) {
               const blockInfo = getBlockInfo(block);
               if (blockInfo.liquid) liquid(blocks, block, blockInfo, xAxis, yAxis);
-              return acc += emojiFormat(blockInfo.id);
+              return acc += emojiFormat(member, blockInfo.name);
             }
           }, '')
         + '\n';

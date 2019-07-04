@@ -32,6 +32,7 @@ async function start(msg) {
   // Sets the data of this game view in the global data map.
   data.set(msg.author.id,
     {
+      member: msg.member,
       guildId: msg.guild.id,
       achievementsRender,
       world,
@@ -49,11 +50,11 @@ async function start(msg) {
 
   // Edit all the game view messages and start the game.
   await achievementsRender.edit(renderAchievements(world.player.achievements));
-  await worldRender.edit(translateWorld(world, world.player.position.x, world.player.position.y));
+  await worldRender.edit(translateWorld(msg.member, world, world.player.position.x, world.player.position.y));
   await movement(msg);
   await placement(msg.member);
   await healthRender.edit(renderHealthbar(world.player.hearts, msg, 'initial'));
-  await renderHotbar(msg.author, world.player.inventory);
+  await renderHotbar(msg.member, world.player.inventory);
   await closeReactions(worldRender, msg.member);
 }
 

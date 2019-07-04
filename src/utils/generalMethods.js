@@ -1,11 +1,11 @@
 /**
  * @desc Convert an emoji id into the actual emoji.
- * @param id {String}
+ * @param member
+ * @param name {String}
  * @returns {*}
  */
-function emojiFormat(id) {
-  const { emojis } = require('../data');
-  return emojis.get(id).toString();
+function emojiFormat(member, name) {
+  return member.guild.emojis.find(e => e.name === name).toString();
 }
 
 /**

@@ -1,12 +1,12 @@
 module.exports = {
   skull: {
     name: 'sl',
-    id: '593479734671835146',
+    path: 'skull',
     type: 'head'
   },
   body: {
     name: 'bo',
-    id: '593479674861060121',
+    path: 'body',
     type: 'body'
   },
   fallDamage: {

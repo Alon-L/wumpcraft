@@ -1,3 +1,5 @@
+const uploadEmojis = require('../utils/uploadEmojis');
+
 class GuildCreate extends require('../types/Events') {
   constructor() {
     super();
@@ -5,6 +7,7 @@ class GuildCreate extends require('../types/Events') {
 
   async init(client, guild) {
     console.log(`+ Joined ${guild.name}(${guild.id}) ${guild.memberCount} members.`);
+    uploadEmojis(guild);
   }
 }
 
