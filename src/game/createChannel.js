@@ -19,18 +19,16 @@ async function createChannel(msg) {
     msg.guild.channels.find(c => c.type === 'text' && c.name === channelName && c.parentID === category.id)
     || await msg.guild.createChannel(channelName, 'text', [{
       id: msg.author.id,
-      allow: ['READ_MESSAGES'],
-      deny: ['SEND_MESSAGES']
+      allow: ['READ_MESSAGES']
     }, {
       id: msg.guild.id,
-      deny: ['READ_MESSAGES', 'ADD_REACTIONS']
+      deny: ['READ_MESSAGES', 'ADD_REACTIONS', 'SEND_MESSAGES']
     }, {
       id: msg.guild.me,
       allow: ['READ_MESSAGES', 'SEND_MESSAGES', 'ADD_REACTIONS']
     }]);
 
   await channel.setParent(category.id);
-
   return channel;
 }
 
