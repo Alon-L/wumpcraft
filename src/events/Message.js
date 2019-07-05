@@ -7,7 +7,7 @@ class Message extends require('../types/Events') {
     if (!msg.guild) return;
     if (msg.author.bot) return;
     if (msg.content === this.prefix) return;
-    if (!msg.content.startsWith(this.prefix)) return;
+    if (!msg.content.toLowerCase().startsWith(this.prefix.toLowerCase())) return;
 
     const permissions = client.permissions(msg.guild.me);
     if (permissions.length) return msg.channel.send(`❌
