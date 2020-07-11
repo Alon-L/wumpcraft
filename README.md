@@ -12,7 +12,7 @@
 ## Bot
 * Invite the bot to your server [here](https://discordapp.com/oauth2/authorize?client_id=592667565898334208&scope=bot&permissions=268774480)
 * Join the bot test server [here](https://discord.gg/VUu7zSF)
-* Visit the website for any additional information [here](https://wumpcraft.xyz)
+* Visit the website for any additional information [here](https://wumpcraft.alonlivne.dev/)
 
 ## About
 WumpCraft was constructed exclusively for Discord Hack Week 2019 by DayColor#0001.
